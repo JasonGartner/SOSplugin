@@ -5,9 +5,12 @@
     <head>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"
             integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
         <style>
             body {
-                background-color: black;
+                background-color: white;
                 width: 1920px;
                 height: 1080px;
             }
@@ -21,83 +24,93 @@
             }
 
             .leftP1 {
+                border-radius: 15px;
                 position: relative;
-                top: 300px;
+                top: 350px;
                 left: 10px;
-                width: 300px;
+                width: 260px;
                 height: 100px;
-                color: black;
                 font-size: 20px;
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: white;
-                background-image: linear-gradient(to right, #0c58fc, #0cb8fc);
+                font-family: 'Bebas Neue';
+                background-color: black;
+        
             }
 
             .leftP2 {
+                border-radius: 15px;
                 position: relative;
-                top: 300px;
+                top: 360px;
                 left: 10px;
-                width: 300px;
+                width: 260px;
                 height: 100px;
-                color: black;
                 font-size: 20px;
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: white;
-                background-image: linear-gradient(to right, #0c58fc, #0cb8fc);
+                font-family: 'Bebas Neue';
+                background-color: black;
             }
 
             .leftP3 {
+                border-radius: 15px;
                 position: relative;
-                top: 300px;
+                top: 370px;
                 left: 10px;
-                width: 300px;
+                width: 260px;
                 height: 100px;
-                color: black;
                 font-size: 20px;
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: white;
-                background-image: linear-gradient(to right, #0c58fc, #0cb8fc);
+                font-family: 'Bebas Neue';
+                background-color: black;
             }
 
             .rightP1 {
+                border-radius: 15px;
                 position: relative;
+                top: 50px;
                 left: 1610px;
-                width: 300px;
+                width: 260px;
                 height: 100px;
-                color: black;
                 font-size: 20px;
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: white;
-                background-image: linear-gradient(to left, #fc3c0c, #fc680c);
+                font-family: 'Bebas Neue';
+                background-color: black;
             }
 
             .rightP2 {
+                border-radius: 15px;
                 position: relative;
+                top: 60px;
                 left: 1610px;
-                width: 300px;
+                width: 260px;
                 height: 100px;
-                color: black;
                 font-size: 20px;
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: white;
-                background-image: linear-gradient(to left, #fc3c0c, #fc680c);
+                font-family: 'Bebas Neue';
+                background-color: black;
             }
 
             .rightP3 {
+                border-radius: 15px;
                 position: relative;
+                top: 70px;
                 left: 1610px;
-                width: 300px;
+                width: 260px;
                 height: 100px;
-                color: black;
                 font-size: 20px;
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: white;
-                background-image: linear-gradient(to left, #fc3c0c, #fc680c);
+                font-family: 'Bebas Neue';
+                background-color: black;
             }
 
-            .boostBar {
-                position: relative;
-                left: 10px;
+            .boostBarLeft {
+                position: absolute;
+                top: 65px;
+                left: 15px;
+                -webkit-appearance: none;
+                border-radius: 15px;
+                border: 1px solid black;
+                height: 15px;
+            }
+
+            .boostBarRight {
+                transform: scaleX(-1);
+                position: absolute;
+                top: 65px;
+                right: 15px;
                 -webkit-appearance: none;
                 border-radius: 15px;
                 border: 1px solid black;
@@ -105,11 +118,106 @@
             }
 
             ::-webkit-progress-bar {
+                border-radius: 15px;
                 background: #201f1f;
             }
 
             ::-webkit-progress-value {
+                border-radius: 15px;
                 background: #e31222;
+            }
+
+
+            .player.boost1 {
+                position: absolute;
+                left: 215px;
+                top: 61px;
+                color: white;
+            }
+
+            .player.boost2 {
+                position: absolute;
+                left: 215px;
+                top: 61px;
+                color: white;
+            }
+
+            .player.boost3 {
+                position: absolute;
+                left: 215px;
+                top: 61px;
+                color: white;
+            }
+
+            .player.boost4 {
+                position: absolute;
+                right: 215px;
+                top: 61px;
+                color: white;
+            }
+
+            .player.boost5 {
+                position: absolute;
+                right: 215px;
+                top: 61px;
+                color: white;
+            }
+
+            .player.boost6 {
+                position: absolute;
+                right: 215px;
+                top: 61px;
+                color: white;
+            }
+
+
+
+            .player.name1 {
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                font-size: 35px;
+                color: white;
+            }
+
+            .player.name2 {
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                font-size: 35px;
+                color: white;
+            }
+
+            .player.name3 {
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                font-size: 35px;
+                color: white;
+            }
+
+            .player.name4 {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                font-size: 35px;
+                color: white;
+            }
+
+            .player.name5 {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                font-size: 35px;
+                color: white;
+            }
+
+            .player.name6 {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                font-size: 35px;
+                color: white;
             }
         </style>
     </head>
@@ -133,81 +241,76 @@
     <!-- Left P1 boost-->
     <div class="leftP1">
         <table class="player-info">
-            <tr class="player name">
-                <th class="name">test</th>
+            <tr class="player name1">
+                <th class="name"></th>
+            </tr>
+            <tr class="player boost1">
+                <th class="boost" ></th>
             </tr>
         </table>
-        <progress class="boostBar" id="leftP1Boost" max="100" value=""></progress>
-        <table class="player-info"></table>
-        <tr class="player boost">
-            <th class="boost">test</th>
-        </tr>
-        </table>
+        <progress class="boostBarLeft" id="leftP1Boost" max="100" value=""></progress>
     </div>
-
-
-
     <!-- Left P2 boost-->
     <div class="leftP2">
         <table class="player-info">
-            <tr class="player name">
-                <th class="name">test</th>
+            <tr class="player name2">
+                <th class="name"></th>
             </tr>
-            <tr class="player boost">
-                <th class="boost">test</th>
+            <tr class="player boost2">
+                <th class="boost"></th>
             </tr>
         </table>
-        <progress class="boostBar" id="leftP2Boost" max="100" value="60"></progress>
+        <progress class="boostBarLeft" id="leftP2Boost" max="100" value=""></progress>
     </div>
     <!-- Left P3 boost-->
     <div class="leftP3">
         <table class="player-info">
-            <tr class="player name">
-                <th class="name">test</th>
+            <tr class="player name3">
+                <th class="name"></th>
             </tr>
-            <tr class="player boost">
-                <th class="boost">test</th>
+            <tr class="player boost3">
+                <th class="boost"></th>
             </tr>
         </table>
-        <progress class="boostBar" id="leftP3Boost" max="100" value="60"></progress>
+        <progress class="boostBarLeft" id="leftP3Boost" max="100" value=""></progress>
     </div>
 
     <!-- Orange Team-->
     <!-- Right P1 boost-->
     <div class="rightP1">
         <table class="player-info">
-            <tr class="player name">
-                <th class="name">test</th>
+            <tr class="player name4">
+                <th class="name"></th>
             </tr>
-            <tr class="player boost">
-                <th class="boost">test</th>
+            <tr class="player boost4">
+                <th class="boost"></th>
             </tr>
         </table>
-        <progress class="boostBar" id="rightP1Boost" max="100" value="60"></progress>
+        <progress class="boostBarRight" id="rightP1Boost" max="100" value=""></progress>
     </div>
     <!-- Right P2 boost-->
     <div class="rightP2">
         <table class="player-info">
-            <tr class="player name">
-                <th class="name">test</th>
+            <tr class="player name5">
+                <th class="name"></th>
             </tr>
-            <tr class="player boost">
-                <th class="boost">test</th>
+            <tr class="player boost5">
+                <th class="boost"></th>
             </tr>
         </table>
-        <progress class="boostBar" id="rightP2Boost" max="100" value="60"></progress>
+        <progress class="boostBarRight" id="rightP2Boost" max="100" value=""></progress>
     </div>
     <!-- Right P3 boost-->
     <div class="rightP3">
         <table class="player-info">
-            <tr class="player name">
-                <th class="name">test</th>
+            <tr class="player name6">
+                <th class="name"></th>
             </tr>
-            <tr class="player boost">
-                <th class="boost">test</th>
+            <tr class="player boost6">
+                <th class="boost"></th>
             </tr>
         </table>
-        <progress class="boostBar" id="rightP3Boost" max="100" value="60"></progress>
+        <progress class="boostBarRight" id="rightP3Boost" max="100" value=""></progress>
     </div>
 
 
@@ -353,28 +456,28 @@
                 //console.log(playerNum)
 
                 if (playerNum == 1) {
-                    $(".leftP1 .player.name .name").text(tmp.slice(0, -2));
-                    $(".leftP1 .player.boost .boost").text(boost['boost']);
+                    $(".leftP1 .player.name1 .name").text(tmp.slice(0, -2));
+                    $(".leftP1 .player.boost1 .boost").text(boost['boost']);
                     document.getElementById("leftP1Boost").value = boost['boost'];
                 } else if (playerNum == 2) {
-                    $(".leftP2 .player.name .name").text(tmp.slice(0, -2));
-                    $(".leftP2 .player.boost .boost").text(boost['boost']);
+                    $(".leftP2 .player.name2 .name").text(tmp.slice(0, -2));
+                    $(".leftP2 .player.boost2 .boost").text(boost['boost']);
                     document.getElementById("leftP2Boost").value = boost['boost'];
                 } else if (playerNum == 3) {
-                    $(".leftP3 .player.name .name").text(tmp.slice(0, -2));
-                    $(".leftP3 .player.boost .boost").text(boost['boost']);
+                    $(".leftP3 .player.name3 .name").text(tmp.slice(0, -2));
+                    $(".leftP3 .player.boost3 .boost").text(boost['boost']);
                     document.getElementById("leftP3Boost").value = boost['boost'];
                 } else if (playerNum == 5) {
-                    $(".rightP1 .player.name .name").text(tmp.slice(0, -2));
-                    $(".rightP1 .player.boost .boost").text(boost['boost']);
+                    $(".rightP1 .player.name4 .name").text(tmp.slice(0, -2));
+                    $(".rightP1 .player.boost4 .boost").text(boost['boost']);
                     document.getElementById("rightP1Boost").value = boost['boost'];
                 } else if (playerNum == 6) {
-                    $(".rightP2 .player.name .name").text(tmp.slice(0, -2));
-                    $(".rightP2 .player.boost .boost").text(boost['boost']);
+                    $(".rightP2 .player.name5 .name").text(tmp.slice(0, -2));
+                    $(".rightP2 .player.boost5 .boost").text(boost['boost']);
                     document.getElementById("rightP2Boost").value = boost['boost'];
                 } else if (playerNum == 7) {
-                    $(".rightP3 .player.name .name").text(tmp.slice(0, -2));
-                    $(".rightP3 .player.boost .boost").text(boost['boost']);
+                    $(".rightP3 .player.name6 .name").text(tmp.slice(0, -2));
+                    $(".rightP3 .player.boost6 .boost").text(boost['boost']);
                     document.getElementById("rightP3Boost").value = boost['boost'];
                 } else {
 
@@ -383,14 +486,14 @@
         });
     });
 /*
-        $(() => {
-            WsSubscribers.init(49322, true)
-            WsSubscribers.subscribe("game", "update_state", (d) => {
-                $(".scorebug .team.left .score").text(d['game']['teams'][0]['score']);
-                $(".scorebug .team.right .score").text(d['game']['teams'][1]['score']);
-            });
-        });
-        */
+                $(() => {
+                    WsSubscribers.init(49322, true)
+                    WsSubscribers.subscribe("game", "update_state", (d) => {
+                        $(".scorebug .team.left .score").text(d['game']['teams'][0]['score']);
+                        $(".scorebug .team.right .score").text(d['game']['teams'][1]['score']);
+                    });
+                });
+                */
 
 </script>
 </head>
