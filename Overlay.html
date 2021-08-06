@@ -9,37 +9,86 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
         <style>
+
+            table{               
+                border-spacing: 20px 0px;
+            }
             body {
                 background-color: white;
                 width: 1920px;
                 height: 1080px;
             }
 
-            .scorebug {
-                position: relative;
-                color: black;
+            .scoreLeftTeam {
+                padding: 15px;
+                position: absolute;
                 font-size: 20px;
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: white;
+                font-family: 'Bebas Neue';
+                background-color: grey;
+                width: 300px;
+                height: 50px;
+                top: 50px;
+                left: 50px;
+                border: 1px solid black;
+            }
+
+            .scoreRightTeam {
+                padding: 15px;
+                position: absolute;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: red;
+                width: 300px;
+                height: 50px;
+                left: 380px;
+                top: 50px;
+                border: 1px solid black;
+            }
+            .scoreTime {
+                padding: 15px;
+                position: absolute;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: black;
+                width: 150px;
+                height: 50px;
+                left: 710px;
+                top: 50px;
+                border: 1px solid black;
+            }
+
+            .team-info {
+                font-family: 'Bebas Neue';
+                color: white;
+                font-size: 40px;
+            }
+
+            .score{
+                position: absolute;
+                right: 20px;
+            }
+            .game.time{
+                position: absolute;
+                right: 10px;
             }
 
             .leftP1 {
                 border-radius: 15px;
                 position: relative;
-                top: 350px;
+                top: 330px;
                 left: 10px;
                 width: 260px;
                 height: 100px;
                 font-size: 20px;
                 font-family: 'Bebas Neue';
                 background-color: black;
-        
+
             }
 
             .leftP2 {
                 border-radius: 15px;
                 position: relative;
-                top: 360px;
+                top: 340px;
                 left: 10px;
                 width: 260px;
                 height: 100px;
@@ -51,7 +100,7 @@
             .leftP3 {
                 border-radius: 15px;
                 position: relative;
-                top: 370px;
+                top: 350px;
                 left: 10px;
                 width: 260px;
                 height: 100px;
@@ -63,7 +112,7 @@
             .rightP1 {
                 border-radius: 15px;
                 position: relative;
-                top: 50px;
+                top: 30px;
                 left: 1610px;
                 width: 260px;
                 height: 100px;
@@ -75,7 +124,7 @@
             .rightP2 {
                 border-radius: 15px;
                 position: relative;
-                top: 60px;
+                top: 40px;
                 left: 1610px;
                 width: 260px;
                 height: 100px;
@@ -87,7 +136,7 @@
             .rightP3 {
                 border-radius: 15px;
                 position: relative;
-                top: 70px;
+                top: 50px;
                 left: 1610px;
                 width: 260px;
                 height: 100px;
@@ -130,52 +179,51 @@
 
             .player.boost1 {
                 position: absolute;
-                left: 215px;
+                left: 200px;
                 top: 61px;
                 color: white;
             }
 
             .player.boost2 {
                 position: absolute;
-                left: 215px;
+                left: 200px;
                 top: 61px;
                 color: white;
             }
 
             .player.boost3 {
                 position: absolute;
-                left: 215px;
+                left: 200px;
                 top: 61px;
                 color: white;
             }
 
             .player.boost4 {
                 position: absolute;
-                right: 215px;
+                right: 200px;
                 top: 61px;
                 color: white;
             }
 
             .player.boost5 {
                 position: absolute;
-                right: 215px;
+                right: 200px;
                 top: 61px;
                 color: white;
             }
 
             .player.boost6 {
                 position: absolute;
-                right: 215px;
+                right: 200px;
                 top: 61px;
                 color: white;
             }
 
 
-
             .player.name1 {
                 position: absolute;
                 top: 15px;
-                left: 15px;
+                left: 0px;
                 font-size: 35px;
                 color: white;
             }
@@ -183,7 +231,7 @@
             .player.name2 {
                 position: absolute;
                 top: 15px;
-                left: 15px;
+                left: 0px;
                 font-size: 35px;
                 color: white;
             }
@@ -191,7 +239,7 @@
             .player.name3 {
                 position: absolute;
                 top: 15px;
-                left: 15px;
+                left: 0px;
                 font-size: 35px;
                 color: white;
             }
@@ -199,7 +247,7 @@
             .player.name4 {
                 position: absolute;
                 top: 15px;
-                right: 15px;
+                right: 0px;
                 font-size: 35px;
                 color: white;
             }
@@ -207,7 +255,7 @@
             .player.name5 {
                 position: absolute;
                 top: 15px;
-                right: 15px;
+                right: 0px;
                 font-size: 35px;
                 color: white;
             }
@@ -215,28 +263,42 @@
             .player.name6 {
                 position: absolute;
                 top: 15px;
-                right: 15px;
+                right: 0px;
                 font-size: 35px;
                 color: white;
             }
         </style>
     </head>
 
-<body>
-    <!--
-    <div class="scorebug">
+<body>  
+
+<!-- Scoreboard-->
+    <div class="scoreLeftTeam">
         <table class="team-info">
             <tr class="team left">
-                <th class="name">Blue</th>
-                <td class="score">0</th>
-            </tr>
-            <tr class="team right">
-                <th class="name">Orange</th>
-                <td class="score">0</th>
+                <td class="name"></td>
+                <td class="score"></td>
             </tr>
         </table>
     </div>
-    -->
+
+    <div class="scoreRightTeam">
+        <table class="team-info">
+            <tr class="team right">
+                <td class="name"></td>
+                <td class="score"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="scoreTime">
+        <table class="team-info">
+            <tr class="game time">
+                <td class="time"></td>
+            </tr>
+        </table>
+    </div>
+
     <!-- Blue Team-->
     <!-- Left P1 boost-->
     <div class="leftP1">
@@ -245,7 +307,7 @@
                 <th class="name"></th>
             </tr>
             <tr class="player boost1">
-                <th class="boost" ></th>
+                <th class="boost"></th>
             </tr>
         </table>
         <progress class="boostBarLeft" id="leftP1Boost" max="100" value=""></progress>
@@ -446,7 +508,7 @@
         WsSubscribers.init(49122, true)
         WsSubscribers.subscribe("game", "update_state", (d) => {
             playerList = Object.entries((d['players']));
-            console.log(playerList)
+            //console.log(playerList)
 
             for (let i = 0; i < 6; i++) {
 
@@ -485,16 +547,37 @@
             }
         });
     });
-/*
-                $(() => {
-                    WsSubscribers.init(49322, true)
-                    WsSubscribers.subscribe("game", "update_state", (d) => {
-                        $(".scorebug .team.left .score").text(d['game']['teams'][0]['score']);
-                        $(".scorebug .team.right .score").text(d['game']['teams'][1]['score']);
-                    });
-                });
-                */
 
+    $(() => {
+        WsSubscribers.init(49322, true)
+        WsSubscribers.subscribe("game", "update_state", (d) => {
+            $(".scoreLeftTeam .team.left .score").text(d['game']['teams'][0]['score']);
+            $(".scoreRightTeam .team.right .score").text(d['game']['teams'][1]['score']);
+            $(".scoreLeftTeam .team.left .name").text(d['game']['teams'][0]['name']);
+            $(".scoreRightTeam .team.right .name").text(d['game']['teams'][1]['name']);
+        });
+    });
+
+    var gameTime = 0;
+
+    $(() => {
+        WsSubscribers.init(49322, true)
+        WsSubscribers.subscribe("game", "update_state", (d) => {
+            gameTime = (d['game']['time_seconds']);
+            function myTime(time) {
+
+                var min = ~~((time % 3600) / 60);
+                var sec = time % 60;
+                var sec_min = "";
+                sec_min += "" + min + ":" + (sec < 10 ? "0" : "");
+                sec_min += "" + sec;
+                return sec_min;
+            }
+
+                $(".scoreTime .game.time .time").text(myTime(gameTime));
+            console.log(myTime(gameTime));
+        });
+    });
 </script>
 </head>
 
