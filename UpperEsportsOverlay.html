@@ -67,8 +67,29 @@
                 left: 685px;
                 top: 25px;
                 border: 1px solid black;
-                border-radius: 0px 15px 15px 0px;
+            }
 
+            .UpperEsportsLogo {
+                position: absolute;
+                height: 100px;
+                width: 300px;
+                left: 818px;
+                top: -8px;
+                z-index: 2;
+            }
+            
+            .UEOutline{
+                padding: 15px;
+                position: absolute;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: #004ac3;
+                width: 150px;
+                height: 50px;
+                left: 840px;
+                top: -1px;
+                border: 1px solid black;
+                border-radius: 0px 15px 15px 0px;
             }
 
             .team-info {
@@ -505,9 +526,11 @@
                 80% {
                     opacity: 1;
                 }
+
                 90% {
                     opacity: 1;
                 }
+
                 100% {
                     opacity: 0.7;
                 }
@@ -573,6 +596,8 @@
                 <td class="gameScore"></td>
             </tr>
         </table>
+        <img class="UpperEsportsLogo" src="Pictures/UE_LongTransparent.png">
+        <div class="UEOutline"></div>
     </div>
 
     <div class="scoreRightTeam">
