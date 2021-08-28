@@ -71,10 +71,25 @@
 
             }
 
+            .isOT {
+                position: relative;
+                top: 65px;
+                left: 6px;
+                color: white;
+                text-align: center;
+                width: 141px;
+                height: 25px;
+                font-family: 'Bebas Neue';
+                background-color: black;
+                border: 1px solid black;
+                border-radius: 0px 0px 15px 15px;
+            }
+
+
             .team-info {
                 font-family: 'Bebas Neue';
                 color: white;
-                font-size: 40px;
+                font-size: 38px;
                 text-shadow: #000 0px 0px 2px;
             }
 
@@ -590,6 +605,7 @@
                 <td class="time"></td>
             </tr>
         </table>
+        <div class="isOT">OVERTIME</div>
     </div>
 
 
@@ -839,9 +855,27 @@
     var homeColor = '';
     var awayColor = '';
 
+    $('.replayBox').hide();
+    $('.activePlayer').hide();
+    $('.leftP1').hide();
+    $('.leftP2').hide();
+    $('.leftP3').hide();
+    $('.rightP1').hide();
+    $('.rightP2').hide();
+    $('.rightP3').hide();
+
     $(() => {
         WsSubscribers.init(49122, false)
         WsSubscribers.subscribe("game", "update_state", (d) => {
+             //if Overtime
+             overtime = (d['game']['isOT']);
+            if (overtime == false) {
+                $('.isOT').hide();
+            } else {
+                $('.isOT').show();
+            }
+
+
             //players boost
             playerList = Object.entries((d['players']));
 
@@ -1018,6 +1052,26 @@
             $('.rightP1').show();
             $('.rightP2').show();
             $('.rightP3').show();
+        });
+    });
+
+     //hide elements
+     $(() => {
+        WsSubscribers.init(49122, true)
+        WsSubscribers.subscribe("game", "clock_stopped", (d) => {
+            $('.activePlayer').hide();
+            $('.leftP1').hide();
+            $('.leftP2').hide();
+            $('.leftP3').hide();
+            $('.rightP1').hide();
+            $('.rightP2').hide();
+            $('.rightP3').hide();
+        });
+    });
+    $(() => {
+        WsSubscribers.init(49122, true)
+        WsSubscribers.subscribe("game", "replay_end", (d) => {
+            $('.replayBox').hide();
         });
     });
 </script>
