@@ -876,6 +876,7 @@
     var gameTime = 0;
     var homeColor = '';
     var awayColor = '';
+    var clockStopped = false;
 
     $('.replayBox').hide();
     $('.activePlayer').hide();
@@ -1005,7 +1006,29 @@
 
             //if replay
             replay = (d['game']['isReplay']);
-            if (replay == true) {
+            if (clockStopped == true && replay == false) {
+                $('.leftP1').show();
+                $('.leftP2').show();
+                $('.leftP3').show();
+                $('.rightP1').show();
+                $('.rightP2').show();
+                $('.rightP3').show();
+                $('.replayBox').hide();
+                if (tmp == "") {
+                    $('.activePlayer').hide();
+                } else {
+                    $('.activePlayer').show();
+                }
+            } else if (clockStopped == true) {
+                $('.activePlayer').hide();
+                $('.leftP1').hide();
+                $('.leftP2').hide();
+                $('.leftP3').hide();
+                $('.rightP1').hide();
+                $('.rightP2').hide();
+                $('.rightP3').hide();
+
+            } else if (replay == true) {
                 $('.leftP1').hide();
                 $('.leftP2').hide();
                 $('.leftP3').hide();
@@ -1013,7 +1036,8 @@
                 $('.rightP2').hide();
                 $('.rightP3').hide();
                 $('.activePlayer').hide();
-            } else {
+
+            } else if (clockStopped == false) {
                 $('.leftP1').show();
                 $('.leftP2').show();
                 $('.leftP3').show();
@@ -1027,7 +1051,6 @@
                     $('.activePlayer').show();
                 }
             }
-
         });
     });
 
@@ -1077,23 +1100,18 @@
         });
     });
 
-    //hide elements
-    $(() => {
+     //hide elements
+     $(() => {
         WsSubscribers.init(49122, true)
         WsSubscribers.subscribe("game", "clock_stopped", (d) => {
-            $('.activePlayer').hide();
-            $('.leftP1').hide();
-            $('.leftP2').hide();
-            $('.leftP3').hide();
-            $('.rightP1').hide();
-            $('.rightP2').hide();
-            $('.rightP3').hide();
+            clockStopped = true;
         });
     });
     $(() => {
         WsSubscribers.init(49122, true)
         WsSubscribers.subscribe("game", "replay_end", (d) => {
             $('.replayBox').hide();
+            clockStopped = false;
         });
     });
 </script>

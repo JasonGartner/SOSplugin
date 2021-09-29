@@ -68,7 +68,6 @@
                 top: 25px;
                 border: 1px solid black;
                 border-radius: 0px 15px 15px 0px;
-
             }
 
             .isOT {
@@ -85,6 +84,61 @@
                 border-radius: 0px 0px 15px 15px;
             }
 
+            .BestOf7{
+                position: absolute;
+                padding: 15px;
+                top: 0px;
+                left: 6px;
+                font-size: 38px;
+                color: white;
+                font-family: 'Bebas Neue';
+            }
+            
+            .bo7{
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            .homeG1 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            .homeG2 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            .homeG3 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            .homeG4 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            .awayG1 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            .awayG2 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            .awayG3 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+            .awayG4 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
 
             .team-info {
                 font-family: 'Bebas Neue';
@@ -608,8 +662,26 @@
             </tr>
         </table>
         <div class="isOT">OVERTIME</div>
+        <div class="BestOf7">BO7</div>
+        
     </div>
 
+      <!-- Games Won -->
+      <div class="gamesWon">
+      <img class="homeG1" src="For OBS\Home/Home1.png">
+      <img class="homeG2" src="For OBS\Home/Home2.png">
+      <img class="homeG3" src="For OBS\Home/Home3.png">
+      <img class="homeG4" src="For OBS\Home/Home4.png">
+      
+      
+      <img class="awayG1" src="For OBS\Away/Away1.png">
+      <img class="awayG2" src="For OBS\Away/Away2.png">
+      <img class="awayG3" src="For OBS\Away/Away3.png">
+      <img class="awayG4" src="For OBS\Away/Away4.png">
+
+
+      <img class="bo7" src="For OBS\Best Of Outline/BO7.png">
+    </div>
 
     <!-- Active Player -->
     <div class="activePlayer">
@@ -858,6 +930,10 @@
     var awayColor = '';
     var clockStopped = false;
 
+    // Series scores
+    var homeSeriesScore = 0;
+    var awaySeriesScore = 0;
+
     $('.replayBox').hide();
     $('.activePlayer').hide();
     $('.leftP1').hide();
@@ -866,6 +942,28 @@
     $('.rightP1').hide();
     $('.rightP2').hide();
     $('.rightP3').hide();
+
+/*
+    $('.homeG1').show();
+    $('.homeG2').show();
+    $('.homeG3').show();
+    $('.homeG4').show();
+    $('.awayG1').show();
+    $('.awayG2').show();
+    $('.awayG3').show();
+    $('.awayG4').show();
+ */
+  
+    $('.homeG1').hide();
+    $('.homeG2').hide();
+    $('.homeG3').hide();
+    $('.homeG4').hide();
+    $('.awayG1').hide();
+    $('.awayG2').hide();
+    $('.awayG3').hide();
+    $('.awayG4').hide();
+    
+
 
     $(() => {
         WsSubscribers.init(49122, false)
@@ -963,7 +1061,7 @@
                 for (let i = 0; i < 6; i++) {
                     var tmp = playerList[i][0];
                     var playerNum = tmp.charAt(tmp.length - 1);
-
+                        
                     if (target == playerNum) {
                         return i;
                     }
@@ -1031,6 +1129,7 @@
                     $('.activePlayer').show();
                 }
             }
+            
         });
     });
 
@@ -1095,6 +1194,65 @@
             clockStopped = false;
         });
     });
+
+    //series score
+    $(() => {
+        WsSubscribers.init(49122, true)
+        WsSubscribers.subscribe("game", "match_ended", (d) => {
+            var teamNum = (d['winner_team_num']);
+
+            //if home team won
+            if (teamNum == 0){
+                homeSeriesScore = homeSeriesScore + 1;
+                console.log("home Score: " + homeSeriesScore);
+               
+            } else if(teamNum == 1){
+                awaySeriesScore = awaySeriesScore + 1;
+                console.log("away Score: " + awaySeriesScore);
+            }
+
+                if ((homeSeriesScore/7) == 1) {
+                    $('.homeG1').show();
+                } 
+                if ((homeSeriesScore/7) == 2) {
+                    $('.homeG1').show();
+                    $('.homeG2').show();
+                }
+                if (homeSeriesScore/7 == 3) {
+                    $('.homeG1').show();
+                    $('.homeG2').show();
+                    $('.homeG3').show();
+                }
+                if (homeSeriesScore/7 == 4) {
+                    $('.homeG1').show();
+                    $('.homeG2').show();
+                    $('.homeG3').show();
+                    $('.homeG4').show();
+                }
+
+                if ((awaySeriesScore/7) == 1) {
+                    $('.awayG1').show();
+                }
+                if ((awaySeriesScore/7) == 2) {
+                    $('.awayG1').show();
+                    $('.awayG2').show();
+                }
+                if (awaySeriesScore/7 == 3) {
+                    $('.awayG1').show();
+                    $('.awayG2').show();
+                    $('.awayG3').show();
+                }
+                if (awaySeriesScore/7 == 4) {
+                    $('.awayG1').show();
+                    $('.awayG2').show();
+                    $('.awayG3').show();
+                    $('.awayG4').show();
+            }
+
+        });
+    });
+
+        
 </script>
 </head>
 
