@@ -21,7 +21,7 @@
             }
 
             body {
-                background-color: white;
+                background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden;
                 width: 1920px;
                 height: 1080px;
             }
@@ -84,7 +84,7 @@
                 border-radius: 0px 0px 15px 15px;
             }
 
-            .BestOf7{
+            .BestOf7 {
                 position: absolute;
                 padding: 15px;
                 top: 0px;
@@ -93,47 +93,55 @@
                 color: white;
                 font-family: 'Bebas Neue';
             }
-            
-            .bo7{
+
+            .bo7 {
                 position: absolute;
                 top: 0px;
                 left: 0px;
             }
+
             .homeG1 {
                 position: absolute;
                 top: 0px;
                 left: 0px;
             }
+
             .homeG2 {
                 position: absolute;
                 top: 0px;
                 left: 0px;
             }
+
             .homeG3 {
                 position: absolute;
                 top: 0px;
                 left: 0px;
             }
+
             .homeG4 {
                 position: absolute;
                 top: 0px;
                 left: 0px;
             }
+
             .awayG1 {
                 position: absolute;
                 top: 0px;
                 left: 0px;
             }
+
             .awayG2 {
                 position: absolute;
                 top: 0px;
                 left: 0px;
             }
+
             .awayG3 {
                 position: absolute;
                 top: 0px;
                 left: 0px;
             }
+
             .awayG4 {
                 position: absolute;
                 top: 0px;
@@ -326,7 +334,7 @@
                 border-radius: 15px;
                 position: absolute;
                 top: 360px;
-                left: 10px;
+                left: 25px;
                 width: 235px;
                 height: 75px;
                 font-size: 20px;
@@ -339,7 +347,7 @@
                 border-radius: 15px;
                 position: absolute;
                 top: 440px;
-                left: 10px;
+                left: 25px;
                 width: 235px;
                 height: 75px;
                 font-size: 20px;
@@ -352,7 +360,7 @@
                 border-radius: 15px;
                 position: absolute;
                 top: 520px;
-                left: 10px;
+                left: 25px;
                 width: 235px;
                 height: 75px;
                 font-size: 20px;
@@ -365,7 +373,7 @@
                 border-radius: 15px;
                 position: absolute;
                 top: 360px;
-                left: 1675px;
+                left: 1660px;
                 width: 235px;
                 height: 75px;
                 font-size: 20px;
@@ -378,7 +386,7 @@
                 border-radius: 15px;
                 position: absolute;
                 top: 440px;
-                left: 1675px;
+                left: 1660px;
                 width: 235px;
                 height: 75px;
                 font-size: 20px;
@@ -391,7 +399,7 @@
                 border-radius: 15px;
                 position: absolute;
                 top: 520px;
-                left: 1675px;
+                left: 1660px;
                 width: 235px;
                 height: 75px;
                 font-size: 20px;
@@ -663,24 +671,24 @@
         </table>
         <div class="isOT">OVERTIME</div>
         <div class="BestOf7">BO7</div>
-        
+
     </div>
 
-      <!-- Games Won -->
-      <div class="gamesWon">
-      <img class="homeG1" src="For OBS\Home/Home1.png">
-      <img class="homeG2" src="For OBS\Home/Home2.png">
-      <img class="homeG3" src="For OBS\Home/Home3.png">
-      <img class="homeG4" src="For OBS\Home/Home4.png">
-      
-      
-      <img class="awayG1" src="For OBS\Away/Away1.png">
-      <img class="awayG2" src="For OBS\Away/Away2.png">
-      <img class="awayG3" src="For OBS\Away/Away3.png">
-      <img class="awayG4" src="For OBS\Away/Away4.png">
+    <!-- Games Won -->
+    <div class="gamesWon">
+        <img class="homeG1" src="For OBS\Home/Home1.png">
+        <img class="homeG2" src="For OBS\Home/Home2.png">
+        <img class="homeG3" src="For OBS\Home/Home3.png">
+        <img class="homeG4" src="For OBS\Home/Home4.png">
 
 
-      <img class="bo7" src="For OBS\Best Of Outline/BO7.png">
+        <img class="awayG1" src="For OBS\Away/Away1.png">
+        <img class="awayG2" src="For OBS\Away/Away2.png">
+        <img class="awayG3" src="For OBS\Away/Away3.png">
+        <img class="awayG4" src="For OBS\Away/Away4.png">
+
+
+        <img class="bo7" src="For OBS\Best Of Outline/BO7.png">
     </div>
 
     <!-- Active Player -->
@@ -943,17 +951,17 @@
     $('.rightP2').hide();
     $('.rightP3').hide();
 
-/*
-    $('.homeG1').show();
-    $('.homeG2').show();
-    $('.homeG3').show();
-    $('.homeG4').show();
-    $('.awayG1').show();
-    $('.awayG2').show();
-    $('.awayG3').show();
-    $('.awayG4').show();
- */
-  
+    /*
+        $('.homeG1').show();
+        $('.homeG2').show();
+        $('.homeG3').show();
+        $('.homeG4').show();
+        $('.awayG1').show();
+        $('.awayG2').show();
+        $('.awayG3').show();
+        $('.awayG4').show();
+     */
+
     $('.homeG1').hide();
     $('.homeG2').hide();
     $('.homeG3').hide();
@@ -962,7 +970,7 @@
     $('.awayG2').hide();
     $('.awayG3').hide();
     $('.awayG4').hide();
-    
+
 
 
     $(() => {
@@ -1061,7 +1069,7 @@
                 for (let i = 0; i < 6; i++) {
                     var tmp = playerList[i][0];
                     var playerNum = tmp.charAt(tmp.length - 1);
-                        
+
                     if (target == playerNum) {
                         return i;
                     }
@@ -1129,7 +1137,7 @@
                     $('.activePlayer').show();
                 }
             }
-            
+
         });
     });
 
@@ -1200,59 +1208,66 @@
         WsSubscribers.init(49122, true)
         WsSubscribers.subscribe("game", "match_ended", (d) => {
             var teamNum = (d['winner_team_num']);
-
+            $('.replayBox').hide();
+            $('.activePlayer').hide();
+            $('.leftP1').hide();
+            $('.leftP2').hide();
+            $('.leftP3').hide();
+            $('.rightP1').hide();
+            $('.rightP2').hide();
+            $('.rightP3').hide();
             //if home team won
-            if (teamNum == 0){
+            if (teamNum == 0) {
                 homeSeriesScore = homeSeriesScore + 1;
                 console.log("home Score: " + homeSeriesScore);
-               
-            } else if(teamNum == 1){
+
+            } else if (teamNum == 1) {
                 awaySeriesScore = awaySeriesScore + 1;
                 console.log("away Score: " + awaySeriesScore);
             }
 
-                if ((homeSeriesScore/7) == 1) {
-                    $('.homeG1').show();
-                } 
-                if ((homeSeriesScore/7) == 2) {
-                    $('.homeG1').show();
-                    $('.homeG2').show();
-                }
-                if (homeSeriesScore/7 == 3) {
-                    $('.homeG1').show();
-                    $('.homeG2').show();
-                    $('.homeG3').show();
-                }
-                if (homeSeriesScore/7 == 4) {
-                    $('.homeG1').show();
-                    $('.homeG2').show();
-                    $('.homeG3').show();
-                    $('.homeG4').show();
-                }
+            if ((homeSeriesScore / 7) == 1) {
+                $('.homeG1').show();
+            }
+            if ((homeSeriesScore / 7) == 2) {
+                $('.homeG1').show();
+                $('.homeG2').show();
+            }
+            if (homeSeriesScore / 7 == 3) {
+                $('.homeG1').show();
+                $('.homeG2').show();
+                $('.homeG3').show();
+            }
+            if (homeSeriesScore / 7 == 4) {
+                $('.homeG1').show();
+                $('.homeG2').show();
+                $('.homeG3').show();
+                $('.homeG4').show();
+            }
 
-                if ((awaySeriesScore/7) == 1) {
-                    $('.awayG1').show();
-                }
-                if ((awaySeriesScore/7) == 2) {
-                    $('.awayG1').show();
-                    $('.awayG2').show();
-                }
-                if (awaySeriesScore/7 == 3) {
-                    $('.awayG1').show();
-                    $('.awayG2').show();
-                    $('.awayG3').show();
-                }
-                if (awaySeriesScore/7 == 4) {
-                    $('.awayG1').show();
-                    $('.awayG2').show();
-                    $('.awayG3').show();
-                    $('.awayG4').show();
+            if ((awaySeriesScore / 7) == 1) {
+                $('.awayG1').show();
+            }
+            if ((awaySeriesScore / 7) == 2) {
+                $('.awayG1').show();
+                $('.awayG2').show();
+            }
+            if (awaySeriesScore / 7 == 3) {
+                $('.awayG1').show();
+                $('.awayG2').show();
+                $('.awayG3').show();
+            }
+            if (awaySeriesScore / 7 == 4) {
+                $('.awayG1').show();
+                $('.awayG2').show();
+                $('.awayG3').show();
+                $('.awayG4').show();
             }
 
         });
     });
 
-        
+
 </script>
 </head>
 

@@ -10,10 +10,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
         <style>
             :root {
-                --homePrimary: blue;
-                --awayPrimary: orange;
+                --homePrimary: #5da6ec;
+                --awayPrimary: #eccb5f;
                 --activeColor: white;
                 --replayColor: white;
+                --activeBoostColor: white;
+                --activeBorderColor: white;
+                --backgroundColor: #12091f;
             }
 
             table {
@@ -32,14 +35,16 @@
                 position: absolute;
                 font-size: 20px;
                 font-family: 'Bebas Neue';
-                background-color: var(--homePrimary);
+                background-color: var(--backgroundColor);
                 width: 300px;
                 height: 50px;
                 top: 25px;
                 left: 25px;
-                border: 1px solid black;
-                text-shadow: #000 0px 0px 2px;
+                border: 1.5px solid var(--homePrimary);
                 border-radius: 15px 0px 0px 15px;
+                text-shadow: #000 0px 0px 2px;
+
+                border-spacing: -5px;
             }
 
             .scoreRightTeam {
@@ -47,13 +52,14 @@
                 position: absolute;
                 font-size: 20px;
                 font-family: 'Bebas Neue';
-                background-color: var(--awayPrimary);
+                background-color: var(--backgroundColor);
                 width: 300px;
                 height: 50px;
-                left: 355px;
+                left: 358px;
                 top: 25px;
-                border: 1px solid black;
+                border: 1.5px solid var(--awayPrimary);
                 text-shadow: #000 0px 0px 2px;
+                border-color: var(--awayPrimary);
             }
 
             .scoreTime {
@@ -64,9 +70,9 @@
                 background-color: black;
                 width: 150px;
                 height: 50px;
-                left: 685px;
+                left: 691px;
                 top: 25px;
-                border: 1px solid black;
+                border: 1.5px solid black;
                 border-radius: 0px 15px 15px 0px;
             }
 
@@ -84,7 +90,7 @@
                 border-radius: 0px 0px 15px 15px;
             }
 
-            .BestOf5 {
+            .BestOf3 {
                 position: absolute;
                 padding: 15px;
                 top: 0px;
@@ -94,7 +100,7 @@
                 font-family: 'Bebas Neue';
             }
 
-            .bo5 {
+            .bo3 {
                 position: absolute;
                 top: 0px;
                 left: 0px;
@@ -172,8 +178,9 @@
                 height: 150px;
                 top: 895px;
                 left: 1295px;
-                background-color: var(--activeColor);
-                border: 1px solid black;
+                background-color: var(--backgroundColor);
+                border: 1.5px solid black;
+                border-color: var(--activeBorderColor);
                 border-radius: 15px 15px 0px 0px;
             }
 
@@ -185,12 +192,13 @@
             .activeBoostBar {
                 position: relative;
                 top: 144px;
-                left: -1px;
+                left: -2px;
                 -webkit-appearance: none;
                 border-radius: 15px;
-                border: 1px solid black;
+                border: 1.5px solid black;
+                border-color: var(--activeBorderColor);
                 height: 20px;
-                width: 602px;
+                width: 603px;
                 z-index: -1;
             }
 
@@ -322,7 +330,7 @@
             .rectangle {
                 position: absolute;
                 height: 60px;
-                width: 600px;
+                width: 599px;
                 top: 90px;
                 z-index: 1;
                 background-color: black;
@@ -339,8 +347,9 @@
                 height: 75px;
                 font-size: 20px;
                 font-family: 'Bebas Neue';
-                background-color: var(--homePrimary);
+                background-color: var(--backgroundColor);
                 text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--homePrimary);
             }
 
             .leftP2 {
@@ -352,10 +361,11 @@
                 height: 75px;
                 font-size: 20px;
                 font-family: 'Bebas Neue';
-                background-color: var(--homePrimary);
+                background-color: var(--backgroundColor);
                 text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--homePrimary);
             }
-
+            /*
             .leftP3 {
                 border-radius: 15px;
                 position: absolute;
@@ -365,10 +375,11 @@
                 height: 75px;
                 font-size: 20px;
                 font-family: 'Bebas Neue';
-                background-color: var(--homePrimary);
+                background-color: var(--backgroundColor);
                 text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--homePrimary);
             }
-
+            */
             .rightP1 {
                 border-radius: 15px;
                 position: absolute;
@@ -378,8 +389,9 @@
                 height: 75px;
                 font-size: 20px;
                 font-family: 'Bebas Neue';
-                background-color: var(--awayPrimary);
+                background-color: var(--backgroundColor);
                 text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--awayPrimary);
             }
 
             .rightP2 {
@@ -391,10 +403,11 @@
                 height: 75px;
                 font-size: 20px;
                 font-family: 'Bebas Neue';
-                background-color: var(--awayPrimary);
+                background-color: var(--backgroundColor);
                 text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--awayPrimary);
             }
-
+            /*
             .rightP3 {
                 border-radius: 15px;
                 position: absolute;
@@ -404,10 +417,11 @@
                 height: 75px;
                 font-size: 20px;
                 font-family: 'Bebas Neue';
-                background-color: var(--awayPrimary);
+                background-color: var(--backgroundColor);
                 text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--awayPrimary);
             }
-
+            */
             /*Boost bar style*/
             .boostBarLeft {
                 position: absolute;
@@ -437,11 +451,20 @@
             }
 
             /*Boost bar color*/
-            ::-webkit-progress-value {
+            progress.boostBarLeft::-webkit-progress-value {
                 border-radius: 15px;
-                /*background: linear-gradient(to right, red, orange, yellow);
-                background:red;*/
-                background: linear-gradient(to right, #fc7c0c, #fc9c0c, #fcc90c);
+                background: linear-gradient(to right, #4970c9, #5aa2ec, #6bb2f2);
+
+            }
+
+            progress.boostBarRight::-webkit-progress-value {
+                border-radius: 15px;
+                background: linear-gradient(to right, #de9242, #dead4c, #efcf61);
+            }
+
+            progress.activeBoostBar::-webkit-progress-value {
+                border-radius: 15px;
+                background: var(--activeBoostColor);
             }
 
             /*Boost bar position*/
@@ -460,7 +483,7 @@
                 color: white;
                 font-size: 18px;
             }
-
+            
             .player.boost3 {
                 position: absolute;
                 left: 190px;
@@ -468,7 +491,7 @@
                 color: white;
                 font-size: 18px;
             }
-
+            
             .player.boost4 {
                 position: absolute;
                 right: 190px;
@@ -484,7 +507,7 @@
                 color: white;
                 font-size: 18px;
             }
-
+            
             .player.boost6 {
                 position: absolute;
                 right: 190px;
@@ -492,7 +515,7 @@
                 color: white;
                 font-size: 18px;
             }
-
+            
             /*Player name position*/
             .player.name1 {
                 position: absolute;
@@ -509,7 +532,7 @@
                 font-size: 35px;
                 color: white;
             }
-
+            
             .player.name3 {
                 position: absolute;
                 top: 5px;
@@ -517,7 +540,7 @@
                 font-size: 35px;
                 color: white;
             }
-
+            
             .player.name4 {
                 position: absolute;
                 top: 5px;
@@ -533,7 +556,7 @@
                 font-size: 35px;
                 color: white;
             }
-
+            
             .player.name6 {
                 position: absolute;
                 top: 5px;
@@ -541,7 +564,7 @@
                 font-size: 35px;
                 color: white;
             }
-
+            
 
             /*replay Box*/
             .replayBox {
@@ -550,7 +573,7 @@
                 height: 100px;
                 top: 955px;
                 left: 710px;
-                background-color: black;
+                background-color: var(--backgroundColor);
                 border: 1px solid black;
                 opacity: 0.8;
                 border-radius: 15px;
@@ -670,7 +693,7 @@
             </tr>
         </table>
         <div class="isOT">OVERTIME</div>
-        <div class="BestOf5">BO5</div>
+        <div class="BestOf3">BO3</div>
 
     </div>
 
@@ -688,7 +711,7 @@
         <img class="awayG4" src="For OBS\Away/Away4.png">
 
 
-        <img class="bo5" src="For OBS\Best Of Outline/BO5.png">
+        <img class="bo3" src="For OBS\Best Of Outline/BO3.png">
     </div>
 
     <!-- Active Player -->
@@ -743,7 +766,7 @@
         </table>
         <progress class="boostBarLeft" id="leftP2Boost" max="100" value=""></progress>
     </div>
-    <!-- Left P3 boost-->
+    <!-- Left P3 boost
     <div class="leftP3">
         <table class="player-info">
             <tr class="player name3">
@@ -754,7 +777,7 @@
             </tr>
         </table>
         <progress class="boostBarLeft" id="leftP3Boost" max="100" value=""></progress>
-    </div>
+    </div>-->
 
     <!-- Orange Team-->
     <!-- Right P1 boost-->
@@ -781,7 +804,7 @@
         </table>
         <progress class="boostBarRight" id="rightP2Boost" max="100" value=""></progress>
     </div>
-    <!-- Right P3 boost-->
+    <!-- Right P3 boost
     <div class="rightP3">
         <table class="player-info">
             <tr class="player name6">
@@ -792,7 +815,7 @@
             </tr>
         </table>
         <progress class="boostBarRight" id="rightP3Boost" max="100" value=""></progress>
-    </div>
+    </div>-->
 
     <!-- replay box -->
     <div class="replayBox">
@@ -988,7 +1011,7 @@
             //players boost
             playerList = Object.entries((d['players']));
 
-            for (let i = 0; i < 6; i++) {
+            for (let i = 0; i < 4; i++) {
 
                 var tmp = playerList[i][0];
                 var stats = playerList[i][1];
@@ -1030,10 +1053,10 @@
             $(".scoreRightTeam .team.right .gameScore").text(d['game']['teams'][1]['score']);
             $(".scoreLeftTeam .team.left .name").text(d['game']['teams'][0]['name']);
             $(".scoreRightTeam .team.right .name").text(d['game']['teams'][1]['name']);
-            r.style.setProperty('--homePrimary', d['game']['teams'][0]['color_primary']);
-            r.style.setProperty('--awayPrimary', d['game']['teams'][1]['color_primary']);
-            homeColor = d['game']['teams'][0]['color_primary'];
-            awayColor = d['game']['teams'][1]['color_primary'];
+            //r.style.setProperty('--homePrimary', d['game']['teams'][0]['color_primary']);
+            //r.style.setProperty('--awayPrimary', d['game']['teams'][1]['color_primary']);
+            //homeColor = d['game']['teams'][0]['color_primary'];
+            //awayColor = d['game']['teams'][1]['color_primary'];
 
             //game time
             gameTime = (d['game']['time_seconds']);
@@ -1055,10 +1078,14 @@
             var tmp = (d['game']['target']);
             var target = tmp.charAt(tmp.length - 1);
 
-            if (target < 4) {
+            if (target < 2) {
                 r.style.setProperty('--activeColor', d['game']['teams'][0]['color_primary']);
+                r.style.setProperty('--activeBoostColor', 'linear-gradient(to right, #4970c9, #5aa2ec, #6bb2f2)');
+                r.style.setProperty('--activeBorderColor', '#5da6ec')
             } else {
                 r.style.setProperty('--activeColor', d['game']['teams'][1]['color_primary']);
+                r.style.setProperty('--activeBoostColor', 'linear-gradient(to right, #de9242, #dead4c, #efcf61)');
+                r.style.setProperty('--activeBorderColor', '#eccb5f')
             }
 
             var arrayNum = getNum(target);
@@ -1066,7 +1093,7 @@
 
             function getNum(target) {
 
-                for (let i = 0; i < 6; i++) {
+                for (let i = 0; i < 4; i++) {
                     var tmp = playerList[i][0];
                     var playerNum = tmp.charAt(tmp.length - 1);
 
@@ -1152,9 +1179,9 @@
             $(".replayBox .assistedBy").text(assist.concat(d['assister']['name']));
             $(".replayBox .ballSpeed").text(ballSpeed);
             if ((d['scorer']['teamnum']) == 0) {
-                r.style.setProperty('--replayColor', homeColor);
+                r.style.setProperty('--replayColor', '#5da6ec')
             } else if ((d['scorer']['teamnum']) == 1) {
-                r.style.setProperty('--replayColor', awayColor);
+                r.style.setProperty('--replayColor', '#eccb5f')
             }
         });
     });
