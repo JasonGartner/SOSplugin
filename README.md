@@ -22,7 +22,7 @@ Player Names <br />
 Team Names <br />
 
 # Example of what it looks like in game (Overlay_BO#_#s)
-![Updated Overlay](updatedOverlay.png)
+![Updated Overlay](updatedOverlay.PNG)
 
 
 # Example of what it looks like in game (OverlayBO#NewCOlor#s)
