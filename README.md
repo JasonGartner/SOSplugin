@@ -21,7 +21,10 @@ Series Score <br />
 Player Names <br />
 Team Names <br />
 
-# Example of what it looks like in game
+# Example of what it looks like in game (Overlay_BO#_#s)
+![](updatedOverlay.PNG)
+
+# Example of what it looks like in game (OverlayBO#NewCOlor#s)
 ![](ExampleIngame.PNG)
 
 # Example of what the between games screen looks like
