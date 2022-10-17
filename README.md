@@ -22,12 +22,13 @@ Player Names <br />
 Team Names <br />
 
 # Example of what it looks like in game (Overlay_BO#_#s)
-![](updatedOverlay.PNG)
+![Updated Overlay](updatedOverlay.PNG)
+
 
 # Example of what it looks like in game (OverlayBO#NewCOlor#s)
-![](ExampleIngame.PNG)
+![Older Overlay](ExampleIngame.PNG)
 
 # Example of what the between games screen looks like
-![](betweenGamesExample.PNG)
+![Between Game Screen](betweenGamesExample.PNG)
 
 ### Series score is also tracked on this screen
