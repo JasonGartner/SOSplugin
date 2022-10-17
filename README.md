@@ -3,6 +3,8 @@ Rocket League Overlay
 
 ### It is an overlay for the video game Rocket League that uses a third party plugin to read real time data from the game so it can be manipulated and displayed.
 
+#Files named Overlay_BO#_#s are the newest version of the overlay. Files named OverlayBO#NewCOlor#s is the older version
+
 #### Tracks:
 Player Score <br />
 Player Goals <br />
