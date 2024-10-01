@@ -105,7 +105,7 @@
                 left: 868px;
                 top: 25px;
                 border: 2px solid black;
-                
+                z-index: -1;
             }
 
             .isOT {
@@ -718,6 +718,42 @@
                 font-family: 'Bebas Neue';
                 font-size: 30px;
             }
+            /*_______________________________________________________________________________________________________________*/
+            .scoreScreen { /*added*/
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                z-index:-1;
+            }
+            .scoreScreenData{
+                position: absolute;
+            }
+
+            .scoreScreenNamesTable{
+                position: absolute;
+                top: 200px;
+                left: 0px;
+                color: white;
+                text-align: center;
+                font-family: 'Bebas Neue';
+                font-size: 50px;   
+                table-layout: fixed;
+                width: 1920px;
+                border-spacing: 20px;
+            }
+
+            .scoreScreenDataTable{
+                position: absolute;
+                top: 360px;
+                left: 0px;
+                color: white;
+                text-align: center;
+                font-family: 'Bebas Neue';
+                font-size: 50px;   
+                table-layout: fixed;
+                width: 1920px;
+                border-spacing: 34px;
+            } /*_______________________________________________________________________________________________________________*/
         </style>
     </head>
 
@@ -887,8 +923,68 @@
         <div class="replay">REPLAY</div>
         <p class="ballSpeed">0</p>
         <p class="assistedBy">test</p>
-
     </div>
+    <!--//_______________________________________________________________________________________________________________-->
+        <!-- End Score Screen--> 
+        <div class="scoreScreenNamesData"> <!--added-->
+            <table class="scoreScreenNamesTable">
+                <tr class="scoreScreenNames">
+                    <td class="scoreScreenNames1">test</td>
+                    <td class="scoreScreenNames2">test</td>
+                    <td class="scoreScreenNames3">test</td>
+                    <td class="scoreScreenNames4">test</td>
+
+                </tr>
+            </table>
+    </div>
+
+        <div class="scoreScreenData"> <!--added-->
+            <img class="scoreScreen" src="Pictures/ScoreScreen.png">
+                <table class="scoreScreenDataTable">
+                    <tr class="scoreScreenScores">
+                        <td class="scoreScreenscores1"></td>
+                        <td class="scoreScreenscores2"></td>
+                        <td class="scoreScreenscores3"></td>
+                        <td class="scoreScreenscores4"></td>
+
+                    </tr>
+                    <tr class="scoreScreenGoals">
+                        <td class="scoreScreenGoals1"></td>
+                        <td class="scoreScreenGoals2"></td>
+                        <td class="scoreScreenGoals3"></td>
+                        <td class="scoreScreenGoals4"></td>
+
+                    </tr>
+                    <tr class="scoreScreenAssists">
+                        <td class="scoreScreenAssists1"></td>
+                        <td class="scoreScreenAssists2"></td>
+                        <td class="scoreScreenAssists3"></td>
+                        <td class="scoreScreenAssists4"></td>
+
+                    </tr>
+                    <tr class="scoreScreenShots">
+                        <td class="scoreScreenShots1"></td>
+                        <td class="scoreScreenShots2"></td>
+                        <td class="scoreScreenShots3"></td>
+                        <td class="scoreScreenShots4"></td>
+
+                    </tr>
+                     <tr class="scoreScreenSaves">
+                        <td class="scoreScreenSaves1"></td>
+                        <td class="scoreScreenSaves2"></td>
+                        <td class="scoreScreenSaves3"></td>
+                        <td class="scoreScreenSaves4"></td>
+
+                    </tr>
+                     <tr class="scoreScreenDemos">
+                        <td class="scoreScreenDemos1"></td>
+                        <td class="scoreScreenDemos2"></td>
+                        <td class="scoreScreenDemos3"></td>
+                        <td class="scoreScreenDemos4"></td>
+
+                    </tr>
+                </table>
+        </div><!--//_______________________________________________________________________________________________________________-->
 </body>
 
 <script>
@@ -1025,7 +1121,9 @@
     // Series scores
     var homeSeriesScore = 0;
     var awaySeriesScore = 0;
-
+    $('.scoreScreenNamesTable').hide();//added______________________________________
+    $('.scoreScreenDataTable').hide();
+    $('.scoreScreen').hide();//added______________________________________
     $('.replayBox').hide();
     $('.activePlayer').hide();
     $('.leftP1').hide();
@@ -1265,14 +1363,17 @@
     $(() => {
         WsSubscribers.init(49122, true)
         WsSubscribers.subscribe("game", "pre_countdown_begin", (d) => {
+            $('.scoreScreenNamesTable').delay(700).fadeOut(500);//added //_________________________________
+            $('.scoreScreenDataTable').delay(700).fadeOut(500);//added 
+            $('.scoreScreen').delay(700).fadeOut(500); //added //__________________________________________
             $('.activePlayer').hide();
             $('.replayBox').hide();
-            $('.leftP1').show();
-            $('.leftP2').show();
-            $('.leftP3').show();
-            $('.rightP1').show();
-            $('.rightP2').show();
-            $('.rightP3').show();
+            $('.leftP1').delay(700).fadeIn(500);
+            $('.leftP2').delay(700).fadeIn(500);
+            $('.leftP3').delay(700).fadeIn(500);
+            $('.rightP1').delay(700).fadeIn(500);
+            $('.rightP2').delay(700).fadeIn(500);
+            $('.rightP3').delay(700).fadeIn(500);//added //_________________________________________________
 
         });
     });
@@ -1355,7 +1456,71 @@
 
         });
     });
+//_______________________________________________________________________________________________________________
+$(() => { //End Game Score Screen
+        WsSubscribers.init(49122, true)
+        WsSubscribers.subscribe("game", "podium_start", (d) => {
+            $('.scoreScreenNamesTable').show();
+            $('.scoreScreen').show();
+            $('.scoreScreenDataTable').show();
 
+            var name1 = playerList[0][0];
+            var stat1 = playerList[0][1];
+            var name2 = playerList[1][0];
+            var stat2 = playerList[1][1];
+            var name3 = playerList[2][0];
+            var stat3 = playerList[2][1];
+            var name4 = playerList[3][0];
+            var stat4 = playerList[3][1];
+
+
+            //Player Names
+            $(".scoreScreenNamesData .scoreScreenNames .scoreScreenNames1").text(name1.slice(0, -2));
+            $(".scoreScreenNamesData .scoreScreenNames .scoreScreenNames2").text(name2.slice(0, -2));
+            $(".scoreScreenNamesData .scoreScreenNames .scoreScreenNames3").text(name3.slice(0, -2));
+            $(".scoreScreenNamesData .scoreScreenNames .scoreScreenNames4").text(name4.slice(0, -2));
+           
+            //stats
+            //Score
+            $(".scoreScreenData .scoreScreenScores .scoreScreenscores1").text(stat1['score']);
+            $(".scoreScreenData .scoreScreenScores .scoreScreenscores2").text(stat2['score']);
+            $(".scoreScreenData .scoreScreenScores .scoreScreenscores3").text(stat3['score']);
+            $(".scoreScreenData .scoreScreenScores .scoreScreenscores4").text(stat4['score']);
+           
+            //Goals
+            $(".scoreScreenData .scoreScreenGoals .scoreScreenGoals1").text(stat1['goals']);
+            $(".scoreScreenData .scoreScreenGoals .scoreScreenGoals2").text(stat2['goals']);
+            $(".scoreScreenData .scoreScreenGoals .scoreScreenGoals3").text(stat3['goals']);
+            $(".scoreScreenData .scoreScreenGoals .scoreScreenGoals4").text(stat4['goals']);
+  
+            //Assists
+            $(".scoreScreenData .scoreScreenAssists .scoreScreenAssists1").text(stat1['assists']);
+            $(".scoreScreenData .scoreScreenAssists .scoreScreenAssists2").text(stat2['assists']);
+            $(".scoreScreenData .scoreScreenAssists .scoreScreenAssists3").text(stat3['assists']);
+            $(".scoreScreenData .scoreScreenAssists .scoreScreenAssists4").text(stat4['assists']);
+
+            //Shots
+            $(".scoreScreenData .scoreScreenShots .scoreScreenShots1").text(stat1['shots']);
+            $(".scoreScreenData .scoreScreenShots .scoreScreenShots2").text(stat2['shots']);
+            $(".scoreScreenData .scoreScreenShots .scoreScreenShots3").text(stat3['shots']);
+            $(".scoreScreenData .scoreScreenShots .scoreScreenShots4").text(stat4['shots']);
+
+            //Saves
+            $(".scoreScreenData .scoreScreenSaves .scoreScreenSaves1").text(stat1['saves']);
+            $(".scoreScreenData .scoreScreenSaves .scoreScreenSaves2").text(stat2['saves']);
+            $(".scoreScreenData .scoreScreenSaves .scoreScreenSaves3").text(stat3['saves']);
+            $(".scoreScreenData .scoreScreenSaves .scoreScreenSaves4").text(stat4['saves']);
+
+            //Demos
+            $(".scoreScreenData .scoreScreenDemos .scoreScreenDemos1").text(stat1['demos']);
+            $(".scoreScreenData .scoreScreenDemos .scoreScreenDemos2").text(stat2['demos']);
+            $(".scoreScreenData .scoreScreenDemos .scoreScreenDemos3").text(stat3['demos']);
+            $(".scoreScreenData .scoreScreenDemos .scoreScreenDemos4").text(stat4['demos']);
+
+ 
+        });
+    });
+//_______________________________________________________________________________________________________________
 
 </script>
 </head>

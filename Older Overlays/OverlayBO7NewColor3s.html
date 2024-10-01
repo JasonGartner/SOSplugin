@@ -1,0 +1,1303 @@
+<html>
+
+<head>
+
+    <head>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --homePrimary: #5da6ec;
+                --awayPrimary: #eccb5f;
+                --activeColor: white;
+                --replayColor: white;
+                --activeBoostColor: white;
+                --activeBorderColor: white;
+                --backgroundColor: #12091f;
+            }
+
+            table {
+                border-spacing: 20px 0px;
+            }
+
+            body {
+                background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden;
+                width: 1920px;
+                height: 1080px;
+            }
+
+            /*Scoreboard*/
+            .scoreLeftTeam {
+                padding: 15px;
+                position: absolute;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: var(--backgroundColor);
+                width: 300px;
+                height: 50px;
+                top: 25px;
+                left: 25px;
+                border: 1.5px solid var(--homePrimary);
+                border-radius: 15px 0px 0px 15px;
+                text-shadow: #000 0px 0px 2px;
+
+                border-spacing: -5px;
+            }
+
+            .scoreRightTeam {
+                padding: 15px;
+                position: absolute;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: var(--backgroundColor);
+                width: 300px;
+                height: 50px;
+                left: 358px;
+                top: 25px;
+                border: 1.5px solid var(--awayPrimary);
+                text-shadow: #000 0px 0px 2px;
+                border-color: var(--awayPrimary);
+            }
+
+            .scoreTime {
+                padding: 15px;
+                position: absolute;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: black;
+                width: 150px;
+                height: 50px;
+                left: 691px;
+                top: 25px;
+                border: 1.5px solid black;
+                border-radius: 0px 15px 15px 0px;
+            }
+
+            .isOT {
+                position: relative;
+                top: 65px;
+                left: 6px;
+                color: white;
+                text-align: center;
+                width: 141px;
+                height: 25px;
+                font-family: 'Bebas Neue';
+                background-color: black;
+                border: 1px solid black;
+                border-radius: 0px 0px 15px 15px;
+            }
+
+            .BestOf7 {
+                position: absolute;
+                padding: 15px;
+                top: 0px;
+                left: 6px;
+                font-size: 38px;
+                color: white;
+                font-family: 'Bebas Neue';
+            }
+
+            .bo7 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+            .homeG1 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+            .homeG2 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+            .homeG3 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+            .homeG4 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+            .awayG1 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+            .awayG2 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+            .awayG3 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+            .awayG4 {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+            .team-info {
+                font-family: 'Bebas Neue';
+                color: white;
+                font-size: 38px;
+                text-shadow: #000 0px 0px 2px;
+            }
+
+            .gameScore {
+                position: absolute;
+                right: 20px;
+            }
+
+            .game.time {
+                position: absolute;
+                right: 10px;
+            }
+
+            /*Active Player*/
+            .activePlayer {
+                position: absolute;
+                width: 600px;
+                height: 150px;
+                top: 895px;
+                left: 1295px;
+                background-color: var(--backgroundColor);
+                border: 1.5px solid black;
+                border-color: var(--activeBorderColor);
+                border-radius: 15px 15px 0px 0px;
+            }
+
+            .active-player-info {
+                color: white;
+                text-shadow: #000 0px 0px 2px;
+            }
+
+            .activeBoostBar {
+                position: relative;
+                top: 144px;
+                left: -2px;
+                -webkit-appearance: none;
+                border-radius: 15px;
+                border: 1.5px solid black;
+                border-color: var(--activeBorderColor);
+                height: 20px;
+                width: 603px;
+                z-index: -1;
+            }
+
+            /*Stat Icons*/
+            .scoreIcon {
+                position: absolute;
+                height: 40px;
+                width: 40px;
+                top: 100px;
+                left: 10px;
+                z-index: 2;
+            }
+
+            .score {
+                position: absolute;
+                font-size: 35px;
+                top: 100px;
+                left: 55px;
+                z-index: 2;
+                font-family: 'Bebas Neue';
+                color: white;
+            }
+
+            .goalIcon {
+                position: absolute;
+                height: 42px;
+                width: 42px;
+                top: 100px;
+                left: 130px;
+                z-index: 2;
+            }
+
+            .goals {
+                position: absolute;
+                font-size: 35px;
+                top: 100px;
+                left: 175px;
+                z-index: 2;
+                font-family: 'Bebas Neue';
+                color: white;
+            }
+
+            .assistIcon {
+                position: absolute;
+                height: 40px;
+                width: 40px;
+                top: 100px;
+                left: 225px;
+                z-index: 2;
+            }
+
+            .assists {
+                position: absolute;
+                font-size: 35px;
+                top: 100px;
+                left: 270px;
+                z-index: 2;
+                font-family: 'Bebas Neue';
+                color: white;
+            }
+
+            .shotsIcon {
+                position: absolute;
+                height: 40px;
+                width: 40px;
+                top: 100px;
+                left: 320px;
+                z-index: 2;
+            }
+
+            .shots {
+                position: absolute;
+                font-size: 35px;
+                top: 100px;
+                left: 365px;
+                z-index: 2;
+                font-family: 'Bebas Neue';
+                color: white;
+            }
+
+            .savesIcon {
+                position: absolute;
+                height: 40px;
+                width: 29px;
+                top: 100px;
+                left: 418px;
+                z-index: 2;
+            }
+
+            .saves {
+                position: absolute;
+                font-size: 35px;
+                top: 100px;
+                left: 460px;
+                z-index: 2;
+                font-family: 'Bebas Neue';
+                color: white;
+            }
+
+            .demosIcon {
+                position: absolute;
+                height: 35px;
+                width: 40px;
+                top: 100px;
+                left: 510px;
+                z-index: 2;
+            }
+
+            .demos {
+                position: absolute;
+                font-size: 35px;
+                top: 100px;
+                left: 555px;
+                z-index: 2;
+                font-family: 'Bebas Neue';
+                color: white;
+            }
+
+            .activePlayerName {
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                font-size: 50px;
+                z-index: 2;
+                font-family: 'Bebas Neue';
+                color: white;
+            }
+
+            .rectangle {
+                position: absolute;
+                height: 60px;
+                width: 599px;
+                top: 90px;
+                z-index: 1;
+                background-color: black;
+            }
+
+
+            /*Boost Bars*/
+            .leftP1 {
+                border-radius: 15px;
+                position: absolute;
+                top: 360px;
+                left: 25px;
+                width: 235px;
+                height: 75px;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: var(--backgroundColor);
+                text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--homePrimary);
+            }
+
+            .leftP2 {
+                border-radius: 15px;
+                position: absolute;
+                top: 440px;
+                left: 25px;
+                width: 235px;
+                height: 75px;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: var(--backgroundColor);
+                text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--homePrimary);
+            }
+            
+            .leftP3 {
+                border-radius: 15px;
+                position: absolute;
+                top: 520px;
+                left: 25px;
+                width: 235px;
+                height: 75px;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: var(--backgroundColor);
+                text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--homePrimary);
+            }
+            
+
+            .rightP1 {
+                border-radius: 15px;
+                position: absolute;
+                top: 360px;
+                left: 1660px;
+                width: 235px;
+                height: 75px;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: var(--backgroundColor);
+                text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--awayPrimary);
+            }
+
+            .rightP2 {
+                border-radius: 15px;
+                position: absolute;
+                top: 440px;
+                left: 1660px;
+                width: 235px;
+                height: 75px;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: var(--backgroundColor);
+                text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--awayPrimary);
+            }
+            
+            .rightP3 {
+                border-radius: 15px;
+                position: absolute;
+                top: 520px;
+                left: 1660px;
+                width: 235px;
+                height: 75px;
+                font-size: 20px;
+                font-family: 'Bebas Neue';
+                background-color: var(--backgroundColor);
+                text-shadow: #000 0px 0px 2px;
+                border: 1px solid var(--awayPrimary);
+            }
+            
+
+            /*Boost bar style*/
+            .boostBarLeft {
+                position: absolute;
+                top: 50px;
+                left: 10px;
+                -webkit-appearance: none;
+                border-radius: 15px;
+                border: 1px solid black;
+                height: 15px;
+            }
+
+            .boostBarRight {
+                transform: scaleX(-1);
+                position: absolute;
+                top: 50px;
+                right: 10px;
+                -webkit-appearance: none;
+                border-radius: 15px;
+                border: 1px solid black;
+                height: 15px;
+            }
+
+            /*Background color of boost bar*/
+            ::-webkit-progress-bar {
+                border-radius: 15px;
+                background: #201f1f;
+            }
+
+            /*Boost bar color*/
+            progress.boostBarLeft::-webkit-progress-value {
+                border-radius: 15px;
+                background: linear-gradient(to right, #4970c9, #5aa2ec, #6bb2f2);
+
+            }
+
+            progress.boostBarRight::-webkit-progress-value {
+                border-radius: 15px;
+                background: linear-gradient(to right, #de9242, #dead4c, #efcf61);
+            }
+
+            progress.activeBoostBar::-webkit-progress-value {
+                border-radius: 15px;
+                background: var(--activeBoostColor);
+            }
+
+            /*Boost bar position*/
+            .player.boost1 {
+                position: absolute;
+                left: 190px;
+                top: 46px;
+                color: white;
+                font-size: 18px;
+            }
+
+            .player.boost2 {
+                position: absolute;
+                left: 190px;
+                top: 46px;
+                color: white;
+                font-size: 18px;
+            }
+
+            .player.boost3 {
+                position: absolute;
+                left: 190px;
+                top: 46px;
+                color: white;
+                font-size: 18px;
+            }
+
+            .player.boost4 {
+                position: absolute;
+                right: 190px;
+                top: 46px;
+                color: white;
+                font-size: 18px;
+            }
+
+            .player.boost5 {
+                position: absolute;
+                right: 190px;
+                top: 46px;
+                color: white;
+                font-size: 18px;
+            }
+
+            .player.boost6 {
+                position: absolute;
+                right: 190px;
+                top: 46px;
+                color: white;
+                font-size: 18px;
+            }
+
+            /*Player name position*/
+            .player.name1 {
+                position: absolute;
+                top: 5px;
+                left: -10px;
+                font-size: 35px;
+                color: white;
+            }
+
+            .player.name2 {
+                position: absolute;
+                top: 5px;
+                left: -10px;
+                font-size: 35px;
+                color: white;
+            }
+
+            .player.name3 {
+                position: absolute;
+                top: 5px;
+                left: -10px;
+                font-size: 35px;
+                color: white;
+            }
+
+            .player.name4 {
+                position: absolute;
+                top: 5px;
+                right: -10px;
+                font-size: 35px;
+                color: white;
+            }
+
+            .player.name5 {
+                position: absolute;
+                top: 5px;
+                right: -10px;
+                font-size: 35px;
+                color: white;
+            }
+
+            .player.name6 {
+                position: absolute;
+                top: 5px;
+                right: -10px;
+                font-size: 35px;
+                color: white;
+            }
+
+
+            /*replay Box*/
+            .replayBox {
+                position: absolute;
+                width: 500px;
+                height: 100px;
+                top: 955px;
+                left: 710px;
+                background-color: var(--backgroundColor);
+                border: 1px solid black;
+                opacity: 0.8;
+                border-radius: 15px;
+            }
+
+            .circle {
+                position: absolute;
+                top: 11px;
+                left: 4px;
+                height: 23px;
+                width: 23px;
+                background-color: red;
+                border-radius: 50%;
+                display: inline-block;
+                animation-name: blink;
+                animation-duration: 0.6s;
+                animation-iteration-count: infinite;
+            }
+
+            @keyframes blink {
+                0% {
+                    opacity: 0;
+                }
+
+                30% {
+                    opacity: .5;
+                }
+
+                80% {
+                    opacity: 1;
+                }
+
+                90% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0.7;
+                }
+            }
+
+            .roundedRectangle {
+                position: absolute;
+                left: 100px;
+                width: 300px;
+                height: 50px;
+                background-color: var(--replayColor);
+                border-radius: 15px;
+            }
+
+            .replay {
+                position: absolute;
+                left: 30px;
+                top: 5px;
+                color: white;
+                font-family: 'Bebas Neue';
+                font-size: 30px;
+            }
+
+            .assistedBy {
+                position: relative;
+                top: 20px;
+                text-align: center;
+                color: white;
+                text-shadow: #000 0px 0px 2px;
+                font-family: 'Bebas Neue';
+                font-size: 35px;
+            }
+
+            .scorerName {
+                position: relative;
+                top: -45px;
+                text-align: center;
+                color: white;
+                text-shadow: #000 0px 0px 2px;
+                font-family: 'Bebas Neue';
+                font-size: 45px;
+            }
+
+            .ballSpeed {
+                position: absolute;
+                top: -25px;
+                right: 20px;
+                color: white;
+                text-shadow: #000 0px 0px 2px;
+                font-family: 'Bebas Neue';
+                font-size: 30px;
+            }
+        </style>
+    </head>
+
+<body>
+
+    <!-- Scoreboard-->
+    <div class="scoreLeftTeam">
+        <table class="team-info">
+            <tr class="team left">
+                <td class="name"></td>
+                <td class="gameScore"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="scoreRightTeam">
+        <table class="team-info">
+            <tr class="team right">
+                <td class="name"></td>
+                <td class="gameScore"></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="scoreTime">
+        <table class="team-info">
+            <tr class="game time">
+                <td class="time"></td>
+            </tr>
+        </table>
+        <div class="isOT">OVERTIME</div>
+        <div class="BestOf7">BO7</div>
+
+    </div>
+
+    <!-- Games Won -->
+    <div class="gamesWon">
+        <img class="homeG1" src="For OBS\Home/Home1.png">
+        <img class="homeG2" src="For OBS\Home/Home2.png">
+        <img class="homeG3" src="For OBS\Home/Home3.png">
+        <img class="homeG4" src="For OBS\Home/Home4.png">
+
+
+        <img class="awayG1" src="For OBS\Away/Away1.png">
+        <img class="awayG2" src="For OBS\Away/Away2.png">
+        <img class="awayG3" src="For OBS\Away/Away3.png">
+        <img class="awayG4" src="For OBS\Away/Away4.png">
+
+
+        <img class="bo7" src="For OBS\Best Of Outline/BO7.png">
+    </div>
+
+    <!-- Active Player -->
+    <div class="activePlayer">
+        <table class="active-player-info">
+            <tr class="activePlayerName">
+                <td class="name"></td>
+            </tr>
+            <tr class="activePlayerStats">
+                <td class="score">0</td>
+                <td class="goals">0</td>
+                <td class="assists">0</td>
+                <td class="shots">0</td>
+                <td class="saves">0</td>
+                <td class="demos">0</td>
+            </tr>
+        </table>
+        <img class="scoreIcon" src="Pictures/GameIcons/score.png">
+        <img class="goalIcon" src="Pictures/GameIcons/goal.png">
+        <img class="assistIcon" src="Pictures/GameIcons/assist.png">
+        <img class="shotsIcon" src="Pictures/GameIcons/shot.png">
+        <img class="savesIcon" src="Pictures/GameIcons/saves.png">
+        <img class="demosIcon" src="Pictures/GameIcons/demo.png">
+        <progress class="activeBoostBar" id="activeBoost" max="100" value=""></progress>
+        <div class="rectangle"></div>
+    </div>
+
+
+
+    <!-- Blue Team-->
+    <!-- Left P1 boost-->
+    <div class="leftP1">
+        <table class="player-info">
+            <tr class="player name1">
+                <th class="name"></th>
+            </tr>
+            <tr class="player boost1">
+                <th class="boost"></th>
+            </tr>
+        </table>
+        <progress class="boostBarLeft" id="leftP1Boost" max="100" value=""></progress>
+    </div>
+    <!-- Left P2 boost-->
+    <div class="leftP2">
+        <table class="player-info">
+            <tr class="player name2">
+                <th class="name"></th>
+            </tr>
+            <tr class="player boost2">
+                <th class="boost"></th>
+            </tr>
+        </table>
+        <progress class="boostBarLeft" id="leftP2Boost" max="100" value=""></progress>
+    </div>
+    <!-- Left P3 boost-->
+    <div class="leftP3">
+        <table class="player-info">
+            <tr class="player name3">
+                <th class="name"></th>
+            </tr>
+            <tr class="player boost3">
+                <th class="boost"></th>
+            </tr>
+        </table>
+        <progress class="boostBarLeft" id="leftP3Boost" max="100" value=""></progress>
+    </div>
+
+    <!-- Orange Team-->
+    <!-- Right P1 boost-->
+    <div class="rightP1">
+        <table class="player-info">
+            <tr class="player name4">
+                <th class="name"></th>
+            </tr>
+            <tr class="player boost4">
+                <th class="boost"></th>
+            </tr>
+        </table>
+        <progress class="boostBarRight" id="rightP1Boost" max="100" value=""></progress>
+    </div>
+    <!-- Right P2 boost-->
+    <div class="rightP2">
+        <table class="player-info">
+            <tr class="player name5">
+                <th class="name"></th>
+            </tr>
+            <tr class="player boost5">
+                <th class="boost"></th>
+            </tr>
+        </table>
+        <progress class="boostBarRight" id="rightP2Boost" max="100" value=""></progress>
+    </div>
+    <!-- Right P3 boost-->
+    <div class="rightP3">
+        <table class="player-info">
+            <tr class="player name6">
+                <th class="name"></th>
+            </tr>
+            <tr class="player boost6">
+                <th class="boost"></th>
+            </tr>
+        </table>
+        <progress class="boostBarRight" id="rightP3Boost" max="100" value=""></progress>
+    </div>
+
+    <!-- replay box -->
+    <div class="replayBox">
+        <div class="circle"></div>
+        <div class="roundedRectangle">
+            <p class="scorerName">test</p>
+        </div>
+        <div class="replay">REPLAY</div>
+        <p class="ballSpeed">0</p>
+        <p class="assistedBy">test</p>
+
+    </div>
+</body>
+
+<script>
+    const WsSubscribers = {
+        __subscribers: {},
+        websocket: undefined,
+        webSocketConnected: false,
+        registerQueue: [],
+        init: function (port, debug, debugFilters) {
+            port = port || 49322;
+            debug = debug || false;
+            if (debug) {
+                if (debugFilters !== undefined) {
+                    console.warn("WebSocket Debug Mode enabled with filtering. Only events not in the filter list will be dumped");
+                } else {
+                    console.warn("WebSocket Debug Mode enabled without filters applied. All events will be dumped to console");
+                    console.warn("To use filters, pass in an array of 'channel:event' strings to the second parameter of the init function");
+                }
+            }
+            WsSubscribers.webSocket = new WebSocket("ws://localhost:" + port);
+            WsSubscribers.webSocket.onmessage = function (event) {
+                let jEvent = JSON.parse(event.data);
+                if (!jEvent.hasOwnProperty('event')) {
+                    return;
+                }
+                let eventSplit = jEvent.event.split(':');
+                let channel = eventSplit[0];
+                let event_event = eventSplit[1];
+                if (debug) {
+                    if (!debugFilters) {
+                        console.log(channel, event_event, jEvent);
+                    } else if (debugFilters && debugFilters.indexOf(jEvent.event) < 0) {
+                        console.log(channel, event_event, jEvent);
+                    }
+                }
+                WsSubscribers.triggerSubscribers(channel, event_event, jEvent.data);
+            };
+            WsSubscribers.webSocket.onopen = function () {
+                WsSubscribers.triggerSubscribers("ws", "open");
+                WsSubscribers.webSocketConnected = true;
+                WsSubscribers.registerQueue.forEach((r) => {
+                    WsSubscribers.send("wsRelay", "register", r);
+                });
+                WsSubscribers.registerQueue = [];
+            };
+            WsSubscribers.webSocket.onerror = function () {
+                WsSubscribers.triggerSubscribers("ws", "error");
+                WsSubscribers.webSocketConnected = false;
+            };
+            WsSubscribers.webSocket.onclose = function () {
+                WsSubscribers.triggerSubscribers("ws", "close");
+                WsSubscribers.webSocketConnected = false;
+            };
+        },
+        /**
+         * Add callbacks for when certain events are thrown
+         * Execution is guaranteed to be in First In First Out order
+         * @param channels
+         * @param events
+         * @param callback
+         */
+        subscribe: function (channels, events, callback) {
+            if (typeof channels === "string") {
+                let channel = channels;
+                channels = [];
+                channels.push(channel);
+            }
+            if (typeof events === "string") {
+                let event = events;
+                events = [];
+                events.push(event);
+            }
+            channels.forEach(function (c) {
+                events.forEach(function (e) {
+                    if (!WsSubscribers.__subscribers.hasOwnProperty(c)) {
+                        WsSubscribers.__subscribers[c] = {};
+                    }
+                    if (!WsSubscribers.__subscribers[c].hasOwnProperty(e)) {
+                        WsSubscribers.__subscribers[c][e] = [];
+                        if (WsSubscribers.webSocketConnected) {
+                            WsSubscribers.send("wsRelay", "register", `${c}:${e}`);
+                        } else {
+                            WsSubscribers.registerQueue.push(`${c}:${e}`);
+                        }
+                    }
+                    WsSubscribers.__subscribers[c][e].push(callback);
+                });
+            })
+        },
+        clearEventCallbacks: function (channel, event) {
+            if (WsSubscribers.__subscribers.hasOwnProperty(channel) && WsSubscribers.__subscribers[channel].hasOwnProperty(event)) {
+                WsSubscribers.__subscribers[channel] = {};
+            }
+        },
+        triggerSubscribers: function (channel, event, data) {
+            if (WsSubscribers.__subscribers.hasOwnProperty(channel) && WsSubscribers.__subscribers[channel].hasOwnProperty(event)) {
+                WsSubscribers.__subscribers[channel][event].forEach(function (callback) {
+                    if (callback instanceof Function) {
+                        callback(data);
+                    }
+                });
+            }
+        },
+        send: function (channel, event, data) {
+            if (typeof channel !== 'string') {
+                console.error("Channel must be a string");
+                return;
+            }
+            if (typeof event !== 'string') {
+                console.error("Event must be a string");
+                return;
+            }
+            if (channel === 'local') {
+                this.triggerSubscribers(channel, event, data);
+            } else {
+                let cEvent = channel + ":" + event;
+                WsSubscribers.webSocket.send(JSON.stringify({
+                    'event': cEvent,
+                    'data': data
+                }));
+            }
+        }
+    };
+
+    //code for overlay
+    var playerList = [];
+    var blue1 = "name";
+    var r = document.querySelector(':root');
+    var gameTime = 0;
+    var homeColor = '';
+    var awayColor = '';
+    var clockStopped = false;
+
+    // Series scores
+    var homeSeriesScore = 0;
+    var awaySeriesScore = 0;
+
+    $('.replayBox').hide();
+    $('.activePlayer').hide();
+    $('.leftP1').hide();
+    $('.leftP2').hide();
+    $('.leftP3').hide();
+    $('.rightP1').hide();
+    $('.rightP2').hide();
+    $('.rightP3').hide();
+
+    /*
+        $('.homeG1').show();
+        $('.homeG2').show();
+        $('.homeG3').show();
+        $('.homeG4').show();
+        $('.awayG1').show();
+        $('.awayG2').show();
+        $('.awayG3').show();
+        $('.awayG4').show();
+     */
+
+    $('.homeG1').hide();
+    $('.homeG2').hide();
+    $('.homeG3').hide();
+    $('.homeG4').hide();
+    $('.awayG1').hide();
+    $('.awayG2').hide();
+    $('.awayG3').hide();
+    $('.awayG4').hide();
+
+
+
+    $(() => {
+        WsSubscribers.init(49122, false)
+        WsSubscribers.subscribe("game", "update_state", (d) => {
+            //if Overtime
+            overtime = (d['game']['isOT']);
+            if (overtime == false) {
+                $('.isOT').hide();
+            } else {
+                $('.isOT').show();
+            }
+
+
+            //players boost
+            playerList = Object.entries((d['players']));
+
+            for (let i = 0; i < 6; i++) {
+
+                var tmp = playerList[i][0];
+                var stats = playerList[i][1];
+                var playerNum = tmp.charAt(tmp.length - 1);
+
+                if (playerNum == 1) {
+                    $(".leftP1 .player.name1 .name").text(tmp.slice(0, -2));
+                    $(".leftP1 .player.boost1 .boost").text(stats['boost']);
+                    document.getElementById("leftP1Boost").value = stats['boost'];
+                } else if (playerNum == 2) {
+                    $(".leftP2 .player.name2 .name").text(tmp.slice(0, -2));
+                    $(".leftP2 .player.boost2 .boost").text(stats['boost']);
+                    document.getElementById("leftP2Boost").value = stats['boost'];
+                } else if (playerNum == 3) {
+                    $(".leftP3 .player.name3 .name").text(tmp.slice(0, -2));
+                    $(".leftP3 .player.boost3 .boost").text(stats['boost']);
+                    document.getElementById("leftP3Boost").value = stats['boost'];
+                } else if (playerNum == 5) {
+                    $(".rightP1 .player.name4 .name").text(tmp.slice(0, -2));
+                    $(".rightP1 .player.boost4 .boost").text(stats['boost']);
+                    document.getElementById("rightP1Boost").value = stats['boost'];
+                } else if (playerNum == 6) {
+                    $(".rightP2 .player.name5 .name").text(tmp.slice(0, -2));
+                    $(".rightP2 .player.boost5 .boost").text(stats['boost']);
+                    document.getElementById("rightP2Boost").value = stats['boost'];
+                } else if (playerNum == 7) {
+                    $(".rightP3 .player.name6 .name").text(tmp.slice(0, -2));
+                    $(".rightP3 .player.boost6 .boost").text(stats['boost']);
+                    document.getElementById("rightP3Boost").value = stats['boost'];
+                } else {
+
+                }
+
+            }
+
+
+            //scoreboard
+            $(".scoreLeftTeam .team.left .gameScore").text(d['game']['teams'][0]['score']);
+            $(".scoreRightTeam .team.right .gameScore").text(d['game']['teams'][1]['score']);
+            $(".scoreLeftTeam .team.left .name").text(d['game']['teams'][0]['name']);
+            $(".scoreRightTeam .team.right .name").text(d['game']['teams'][1]['name']);
+            //r.style.setProperty('--homePrimary', d['game']['teams'][0]['color_primary']);
+            //r.style.setProperty('--awayPrimary', d['game']['teams'][1]['color_primary']);
+            //homeColor = d['game']['teams'][0]['color_primary'];
+            //awayColor = d['game']['teams'][1]['color_primary'];
+
+            //game time
+            gameTime = (d['game']['time_seconds']);
+            function myTime(time) {
+
+                var min = ~~((time % 3600) / 60);
+                var sec = time % 60;
+                var sec_min = "";
+                sec_min += "" + min + ":" + (sec < 10 ? "0" : "");
+                sec_min += "" + sec;
+                return sec_min;
+            }
+            $(".scoreTime .game.time .time").text(myTime(gameTime));
+
+
+            //active player
+            playerList = Object.entries((d['players']));
+
+            var tmp = (d['game']['target']);
+            var target = tmp.charAt(tmp.length - 1);
+
+            if (target < 4) {
+                r.style.setProperty('--activeColor', d['game']['teams'][0]['color_primary']);
+                r.style.setProperty('--activeBoostColor', 'linear-gradient(to right, #4970c9, #5aa2ec, #6bb2f2)');
+                r.style.setProperty('--activeBorderColor', '#5da6ec')
+            } else {
+                r.style.setProperty('--activeColor', d['game']['teams'][1]['color_primary']);
+                r.style.setProperty('--activeBoostColor', 'linear-gradient(to right, #de9242, #dead4c, #efcf61)');
+                r.style.setProperty('--activeBorderColor', '#eccb5f')
+            }
+
+            var arrayNum = getNum(target);
+            activePlayer(arrayNum);
+
+            function getNum(target) {
+
+                for (let i = 0; i < 6; i++) {
+                    var tmp = playerList[i][0];
+                    var playerNum = tmp.charAt(tmp.length - 1);
+
+                    if (target == playerNum) {
+                        return i;
+                    }
+                }
+            }
+            function activePlayer(arrayNum) {
+                var tmp = playerList[arrayNum][0];
+                var stats = playerList[arrayNum][1];
+                //player name
+                $(".activePlayer .activePlayerName .name").text(tmp.slice(0, -2));
+                //stats
+                $(".activePlayer .activePlayerStats .score").text(stats['score']);
+                $(".activePlayer .activePlayerStats .goals").text(stats['goals']);
+                $(".activePlayer .activePlayerStats .assists").text(stats['assists']);
+                $(".activePlayer .activePlayerStats .shots").text(stats['shots']);
+                $(".activePlayer .activePlayerStats .saves").text(stats['saves']);
+                $(".activePlayer .activePlayerStats .demos").text(stats['demos']);
+                document.getElementById("activeBoost").value = stats['boost'];
+            }
+
+            //if replay
+            replay = (d['game']['isReplay']);
+            if (clockStopped == true && replay == false) {
+                $('.leftP1').show();
+                $('.leftP2').show();
+                $('.leftP3').show();
+                $('.rightP1').show();
+                $('.rightP2').show();
+                $('.rightP3').show();
+                $('.replayBox').hide();
+                if (tmp == "") {
+                    $('.activePlayer').hide();
+                } else {
+                    $('.activePlayer').show();
+                }
+            } else if (clockStopped == true) {
+                $('.activePlayer').hide();
+                $('.leftP1').hide();
+                $('.leftP2').hide();
+                $('.leftP3').hide();
+                $('.rightP1').hide();
+                $('.rightP2').hide();
+                $('.rightP3').hide();
+
+            } else if (replay == true) {
+                $('.leftP1').hide();
+                $('.leftP2').hide();
+                $('.leftP3').hide();
+                $('.rightP1').hide();
+                $('.rightP2').hide();
+                $('.rightP3').hide();
+                $('.activePlayer').hide();
+
+            } else if (clockStopped == false) {
+                $('.leftP1').show();
+                $('.leftP2').show();
+                $('.leftP3').show();
+                $('.rightP1').show();
+                $('.rightP2').show();
+                $('.rightP3').show();
+                $('.replayBox').hide();
+                if (tmp == "") {
+                    $('.activePlayer').hide();
+                } else {
+                    $('.activePlayer').show();
+                }
+            }
+
+        });
+    });
+
+    //replay Box
+    $(() => {
+        WsSubscribers.init(49122, true)
+        WsSubscribers.subscribe("game", "goal_scored", (d) => {
+            var assist = "ASSIST: ";
+            var kph = " KPH"
+            var ballSpeed = (Math.round(d['goalspeed'])) + kph;
+            $(".replayBox .roundedRectangle .scorerName").text(d['scorer']['name']);
+            $(".replayBox .assistedBy").text(assist.concat(d['assister']['name']));
+            $(".replayBox .ballSpeed").text(ballSpeed);
+            if ((d['scorer']['teamnum']) == 0) {
+                r.style.setProperty('--replayColor', '#5da6ec')
+            } else if ((d['scorer']['teamnum']) == 1) {
+                r.style.setProperty('--replayColor', '#eccb5f')
+            }
+        });
+    });
+
+    $(() => {
+        WsSubscribers.init(49122, true)
+        WsSubscribers.subscribe("game", "replay_start", (d) => {
+            $('.replayBox').show();
+            $('.activePlayer').hide();
+            $('.leftP1').hide();
+            $('.leftP2').hide();
+            $('.leftP3').hide();
+            $('.rightP1').hide();
+            $('.rightP2').hide();
+            $('.rightP3').hide();
+        });
+    });
+
+    $(() => {
+        WsSubscribers.init(49122, true)
+        WsSubscribers.subscribe("game", "pre_countdown_begin", (d) => {
+            $('.activePlayer').hide();
+            $('.replayBox').hide();
+            $('.leftP1').show();
+            $('.leftP2').show();
+            $('.leftP3').show();
+            $('.rightP1').show();
+            $('.rightP2').show();
+            $('.rightP3').show();
+
+        });
+    });
+
+    //hide elements
+    $(() => {
+        WsSubscribers.init(49122, true)
+        WsSubscribers.subscribe("game", "clock_stopped", (d) => {
+            clockStopped = true;
+        });
+    });
+    $(() => {
+        WsSubscribers.init(49122, true)
+        WsSubscribers.subscribe("game", "replay_end", (d) => {
+            $('.replayBox').hide();
+            clockStopped = false;
+        });
+    });
+
+    //series score
+    $(() => {
+        WsSubscribers.init(49122, true)
+        WsSubscribers.subscribe("game", "match_ended", (d) => {
+            var teamNum = (d['winner_team_num']);
+            $('.replayBox').hide();
+            $('.activePlayer').hide();
+            $('.leftP1').hide();
+            $('.leftP2').hide();
+            $('.leftP3').hide();
+            $('.rightP1').hide();
+            $('.rightP2').hide();
+            $('.rightP3').hide();
+            //if home team won
+            if (teamNum == 0) {
+                homeSeriesScore = homeSeriesScore + 1;
+                console.log("home Score: " + homeSeriesScore);
+
+            } else if (teamNum == 1) {
+                awaySeriesScore = awaySeriesScore + 1;
+                console.log("away Score: " + awaySeriesScore);
+            }
+
+            if ((homeSeriesScore / 7) == 1) {
+                $('.homeG1').show();
+            }
+            if ((homeSeriesScore / 7) == 2) {
+                $('.homeG1').show();
+                $('.homeG2').show();
+            }
+            if (homeSeriesScore / 7 == 3) {
+                $('.homeG1').show();
+                $('.homeG2').show();
+                $('.homeG3').show();
+            }
+            if (homeSeriesScore / 7 == 4) {
+                $('.homeG1').show();
+                $('.homeG2').show();
+                $('.homeG3').show();
+                $('.homeG4').show();
+            }
+
+            if ((awaySeriesScore / 7) == 1) {
+                $('.awayG1').show();
+            }
+            if ((awaySeriesScore / 7) == 2) {
+                $('.awayG1').show();
+                $('.awayG2').show();
+            }
+            if (awaySeriesScore / 7 == 3) {
+                $('.awayG1').show();
+                $('.awayG2').show();
+                $('.awayG3').show();
+            }
+            if (awaySeriesScore / 7 == 4) {
+                $('.awayG1').show();
+                $('.awayG2').show();
+                $('.awayG3').show();
+                $('.awayG4').show();
+            }
+
+        });
+    });
+
+
+</script>
+</head>
+
+</html>

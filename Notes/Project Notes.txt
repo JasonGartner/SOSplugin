@@ -1,0 +1,30 @@
+"game:match_ended"
+
+"game:match_created"
+
+"game:initialized" // start of the game
+
+
+"game:podium_start" // add screen when this
+
+
+lines 1296 End of game
+
+
+
+Lines added
+
+css for score screen 720
+
+End score screen html 900
+
+Hide score screen js 1020
+
+Show Score screen js 1373
+
+
+To Do:
+
+Have bo3 3s done
+
+Make for bo5 and bo7 for 1s, 2s, and 3s.
