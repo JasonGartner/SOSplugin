@@ -29,6 +29,6 @@ Team Names <br />
 ![Older Overlay](ExampleIngame.PNG)
 
 # Example of what the between games screen looks like
-![Scoreboard Screen](ScoreboardScreen.PNG)
+![Scoreboard Screen](ScoreboardScreen.png)
 
 ### Series score is also tracked on this screen
