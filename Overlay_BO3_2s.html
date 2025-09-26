@@ -24,7 +24,9 @@
             }
 
             body {
-                background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden;
+                background-color: rgba(0, 0, 0, 0);
+                margin: 0px auto;
+                overflow: hidden;
                 width: 1920px;
                 height: 1080px;
             }
@@ -45,6 +47,7 @@
                 text-shadow: #000 0px 0px 2px;
                 border-spacing: -5px;
             }
+
             .awayPicBox {
                 padding: 15px;
                 position: absolute;
@@ -61,6 +64,7 @@
                 border-radius: 0px 15px 15px 0px;
                 border-spacing: -5px;
             }
+
             .scoreLeftTeam {
                 padding: 15px;
                 position: absolute;
@@ -106,7 +110,7 @@
                 top: 25px;
                 border: 2px solid black;
                 z-index: -1;
-                
+
             }
 
             .isOT {
@@ -197,6 +201,7 @@
                 left: 0px;
                 text-align: left;
             }
+
             .team-infoR {
                 font-family: 'Bebas Neue';
                 color: white;
@@ -206,6 +211,7 @@
                 right: -18px;
                 text-align: right;
             }
+
             .team-info {
                 font-family: 'Bebas Neue';
                 color: white;
@@ -215,13 +221,14 @@
 
             .gameScoreL {
                 position: fixed;
-                left:818px;
+                left: 818px;
             }
+
             .gameScoreR {
                 position: fixed;
                 right: 818px;
             }
- 
+
 
             .game.time {
                 position: absolute;
@@ -422,6 +429,7 @@
                 text-shadow: #000 0px 0px 2px;
                 border: 2px solid var(--homePrimary);
             }
+
             /*
             .leftP3 {
                 border-radius: 15px;
@@ -464,6 +472,7 @@
                 text-shadow: #000 0px 0px 2px;
                 border: 2px solid var(--awayPrimary);
             }
+
             /*
             .rightP3 {
                 border-radius: 15px;
@@ -719,42 +728,47 @@
                 font-family: 'Bebas Neue';
                 font-size: 30px;
             }
+
             /*_______________________________________________________________________________________________________________*/
-            .scoreScreen { /*added*/
+            .scoreScreen {
+                /*added*/
                 position: absolute;
                 top: 0px;
                 left: 0px;
-                z-index:-1;
+                z-index: -1;
             }
-            .scoreScreenData{
+
+            .scoreScreenData {
                 position: absolute;
             }
 
-            .scoreScreenNamesTable{
+            .scoreScreenNamesTable {
                 position: absolute;
                 top: 200px;
                 left: 0px;
                 color: white;
                 text-align: center;
                 font-family: 'Bebas Neue';
-                font-size: 50px;   
+                font-size: 50px;
                 table-layout: fixed;
                 width: 1920px;
                 border-spacing: 20px;
             }
 
-            .scoreScreenDataTable{
+            .scoreScreenDataTable {
                 position: absolute;
                 top: 360px;
                 left: 0px;
                 color: white;
                 text-align: center;
                 font-family: 'Bebas Neue';
-                font-size: 50px;   
+                font-size: 50px;
                 table-layout: fixed;
                 width: 1920px;
                 border-spacing: 34px;
-            } /*_______________________________________________________________________________________________________________*/
+            }
+
+            /*_______________________________________________________________________________________________________________*/
         </style>
     </head>
 
@@ -765,7 +779,7 @@
     </div>
     <div class="awayPicBox">
     </div>
-    
+
     <div class="scoreLeftTeam">
         <table class="team-infoL">
             <tr class="team left">
@@ -926,66 +940,67 @@
         <p class="assistedBy">test</p>
     </div>
     <!--//_______________________________________________________________________________________________________________-->
-        <!-- End Score Screen--> 
-        <div class="scoreScreenNamesData"> <!--added-->
-            <table class="scoreScreenNamesTable">
-                <tr class="scoreScreenNames">
-                    <td class="scoreScreenNames1">test</td>
-                    <td class="scoreScreenNames2">test</td>
-                    <td class="scoreScreenNames3">test</td>
-                    <td class="scoreScreenNames4">test</td>
+    <!-- End Score Screen-->
+    <div class="scoreScreenNamesData"> <!--added-->
+        <table class="scoreScreenNamesTable">
+            <tr class="scoreScreenNames">
+                <td class="scoreScreenNames1">test</td>
+                <td class="scoreScreenNames2">test</td>
+                <td class="scoreScreenNames3">test</td>
+                <td class="scoreScreenNames4">test</td>
 
-                </tr>
-            </table>
+            </tr>
+        </table>
     </div>
 
-        <div class="scoreScreenData"> <!--added-->
-            <img class="scoreScreen" src="Pictures/ScoreScreen.png">
-                <table class="scoreScreenDataTable">
-                    <tr class="scoreScreenScores">
-                        <td class="scoreScreenscores1"></td>
-                        <td class="scoreScreenscores2"></td>
-                        <td class="scoreScreenscores3"></td>
-                        <td class="scoreScreenscores4"></td>
+    <div class="scoreScreenData"> <!--added-->
+        <img class="scoreScreen" src="Pictures/ScoreScreen.png">
+        <table class="scoreScreenDataTable">
+            <tr class="scoreScreenScores">
+                <td class="scoreScreenscores1"></td>
+                <td class="scoreScreenscores2"></td>
+                <td class="scoreScreenscores3"></td>
+                <td class="scoreScreenscores4"></td>
 
-                    </tr>
-                    <tr class="scoreScreenGoals">
-                        <td class="scoreScreenGoals1"></td>
-                        <td class="scoreScreenGoals2"></td>
-                        <td class="scoreScreenGoals3"></td>
-                        <td class="scoreScreenGoals4"></td>
+            </tr>
+            <tr class="scoreScreenGoals">
+                <td class="scoreScreenGoals1"></td>
+                <td class="scoreScreenGoals2"></td>
+                <td class="scoreScreenGoals3"></td>
+                <td class="scoreScreenGoals4"></td>
 
-                    </tr>
-                    <tr class="scoreScreenAssists">
-                        <td class="scoreScreenAssists1"></td>
-                        <td class="scoreScreenAssists2"></td>
-                        <td class="scoreScreenAssists3"></td>
-                        <td class="scoreScreenAssists4"></td>
+            </tr>
+            <tr class="scoreScreenAssists">
+                <td class="scoreScreenAssists1"></td>
+                <td class="scoreScreenAssists2"></td>
+                <td class="scoreScreenAssists3"></td>
+                <td class="scoreScreenAssists4"></td>
 
-                    </tr>
-                    <tr class="scoreScreenShots">
-                        <td class="scoreScreenShots1"></td>
-                        <td class="scoreScreenShots2"></td>
-                        <td class="scoreScreenShots3"></td>
-                        <td class="scoreScreenShots4"></td>
+            </tr>
+            <tr class="scoreScreenShots">
+                <td class="scoreScreenShots1"></td>
+                <td class="scoreScreenShots2"></td>
+                <td class="scoreScreenShots3"></td>
+                <td class="scoreScreenShots4"></td>
 
-                    </tr>
-                     <tr class="scoreScreenSaves">
-                        <td class="scoreScreenSaves1"></td>
-                        <td class="scoreScreenSaves2"></td>
-                        <td class="scoreScreenSaves3"></td>
-                        <td class="scoreScreenSaves4"></td>
+            </tr>
+            <tr class="scoreScreenSaves">
+                <td class="scoreScreenSaves1"></td>
+                <td class="scoreScreenSaves2"></td>
+                <td class="scoreScreenSaves3"></td>
+                <td class="scoreScreenSaves4"></td>
 
-                    </tr>
-                     <tr class="scoreScreenDemos">
-                        <td class="scoreScreenDemos1"></td>
-                        <td class="scoreScreenDemos2"></td>
-                        <td class="scoreScreenDemos3"></td>
-                        <td class="scoreScreenDemos4"></td>
+            </tr>
+            <tr class="scoreScreenDemos">
+                <td class="scoreScreenDemos1"></td>
+                <td class="scoreScreenDemos2"></td>
+                <td class="scoreScreenDemos3"></td>
+                <td class="scoreScreenDemos4"></td>
 
-                    </tr>
-                </table>
-        </div><!--//_______________________________________________________________________________________________________________-->
+            </tr>
+        </table>
+    </div>
+    <!--//_______________________________________________________________________________________________________________-->
 </body>
 
 <script>
@@ -1176,7 +1191,7 @@
                 var tmp = playerList[i][0];
                 var stats = playerList[i][1];
                 var playerNum = tmp.charAt(tmp.length - 1);
-        
+
 
                 if (playerNum == 1) {
                     $(".leftP1 .player.name1 .name").text(tmp.slice(0, -2));
@@ -1457,22 +1472,41 @@
 
         });
     });
-//_______________________________________________________________________________________________________________
-$(() => { //End Game Score Screen
+    //_______________________________________________________________________________________________________________
+    $(() => { //End Game Score Screen
         WsSubscribers.init(49122, true)
         WsSubscribers.subscribe("game", "podium_start", (d) => {
             $('.scoreScreenNamesTable').show();
             $('.scoreScreen').show();
             $('.scoreScreenDataTable').show();
 
-            var name1 = playerList[0][0];
-            var stat1 = playerList[0][1];
-            var name2 = playerList[1][0];
-            var stat2 = playerList[1][1];
-            var name3 = playerList[2][0];
-            var stat3 = playerList[2][1];
-            var name4 = playerList[3][0];
-            var stat4 = playerList[3][1];
+            let name1 = "", stat1 = {};
+            let name2 = "", stat2 = {};
+            let name3 = "", stat3 = {};
+            let name4 = "", stat4 = {};
+
+            for (let i = 0; i < 2; i++) {
+
+                var tmp = playerList[i][0];
+                var stats = playerList[i][1];
+                var playerNum = tmp.charAt(tmp.length - 1);
+
+                if (playerNum == 1) {
+                    name1 = tmp;
+                    stat1 = stats;
+                } else if (playerNum == 2) {
+                    name2 = tmp;
+                    stat2 = stats;
+                } else if (playerNum == 3) {
+                    name3 = tmp;
+                    stat3 = stats;
+                } else if (playerNum == 5) {
+                    name4 = tmp;
+                    stat4 = stats;
+                } else {
+
+                }
+            }
 
 
             //Player Names
@@ -1480,20 +1514,20 @@ $(() => { //End Game Score Screen
             $(".scoreScreenNamesData .scoreScreenNames .scoreScreenNames2").text(name2.slice(0, -2));
             $(".scoreScreenNamesData .scoreScreenNames .scoreScreenNames3").text(name3.slice(0, -2));
             $(".scoreScreenNamesData .scoreScreenNames .scoreScreenNames4").text(name4.slice(0, -2));
-           
+
             //stats
             //Score
             $(".scoreScreenData .scoreScreenScores .scoreScreenscores1").text(stat1['score']);
             $(".scoreScreenData .scoreScreenScores .scoreScreenscores2").text(stat2['score']);
             $(".scoreScreenData .scoreScreenScores .scoreScreenscores3").text(stat3['score']);
             $(".scoreScreenData .scoreScreenScores .scoreScreenscores4").text(stat4['score']);
-           
+
             //Goals
             $(".scoreScreenData .scoreScreenGoals .scoreScreenGoals1").text(stat1['goals']);
             $(".scoreScreenData .scoreScreenGoals .scoreScreenGoals2").text(stat2['goals']);
             $(".scoreScreenData .scoreScreenGoals .scoreScreenGoals3").text(stat3['goals']);
             $(".scoreScreenData .scoreScreenGoals .scoreScreenGoals4").text(stat4['goals']);
-  
+
             //Assists
             $(".scoreScreenData .scoreScreenAssists .scoreScreenAssists1").text(stat1['assists']);
             $(".scoreScreenData .scoreScreenAssists .scoreScreenAssists2").text(stat2['assists']);
@@ -1518,10 +1552,10 @@ $(() => { //End Game Score Screen
             $(".scoreScreenData .scoreScreenDemos .scoreScreenDemos3").text(stat3['demos']);
             $(".scoreScreenData .scoreScreenDemos .scoreScreenDemos4").text(stat4['demos']);
 
- 
+
         });
     });
-//_______________________________________________________________________________________________________________
+    //_______________________________________________________________________________________________________________
 
 </script>
 </head>

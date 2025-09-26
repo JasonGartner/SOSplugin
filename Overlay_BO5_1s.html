@@ -1451,10 +1451,27 @@ $(() => { //End Game Score Screen
             $('.scoreScreen').show();
             $('.scoreScreenDataTable').show();
 
-            var name1 = playerList[0][0];
-            var stat1 = playerList[0][1];
-            var name2 = playerList[1][0];
-            var stat2 = playerList[1][1];
+            let name1 = "", stat1 = {};
+            let name2 = "", stat2 = {};
+
+
+            for (let i = 0; i < 2; i++) {
+
+                var tmp = playerList[i][0];
+                var stats = playerList[i][1];
+                var playerNum = tmp.charAt(tmp.length - 1);
+
+                if (playerNum == 1) {
+                    name1 = tmp;
+                    stat1 = stats;
+                } else if (playerNum == 2) {
+                    name2 = tmp;
+                    stat2 = stats;
+                } else {
+
+                }
+
+            }
             
 
             //Player Names
