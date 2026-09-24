@@ -1,0 +1,11 @@
+{
+  "name": "rocket-league-sos-replacement",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node rl-sos-bridge.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
