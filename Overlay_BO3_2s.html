@@ -1312,38 +1312,38 @@
                 console.log("away Score: " + awaySeriesScore);
             }
 
-            if ((homeSeriesScore / 7) == 1) {
+            if (homeSeriesScore >= 1) {
                 $('.homeG1').show();
             }
-            if ((homeSeriesScore / 7) == 2) {
+            if (homeSeriesScore >= 2) {
                 $('.homeG1').show();
                 $('.homeG2').show();
             }
-            if (homeSeriesScore / 7 == 3) {
+            if (homeSeriesScore >= 3) {
                 $('.homeG1').show();
                 $('.homeG2').show();
                 $('.homeG3').show();
             }
-            if (homeSeriesScore / 7 == 4) {
+            if (homeSeriesScore >= 4) {
                 $('.homeG1').show();
                 $('.homeG2').show();
                 $('.homeG3').show();
                 $('.homeG4').show();
             }
 
-            if ((awaySeriesScore / 7) == 1) {
+            if (awaySeriesScore >= 1) {
                 $('.awayG1').show();
             }
-            if ((awaySeriesScore / 7) == 2) {
+            if (awaySeriesScore >= 2) {
                 $('.awayG1').show();
                 $('.awayG2').show();
             }
-            if (awaySeriesScore / 7 == 3) {
+            if (awaySeriesScore >= 3) {
                 $('.awayG1').show();
                 $('.awayG2').show();
                 $('.awayG3').show();
             }
-            if (awaySeriesScore / 7 == 4) {
+            if (awaySeriesScore >= 4) {
                 $('.awayG1').show();
                 $('.awayG2').show();
                 $('.awayG3').show();
@@ -1359,7 +1359,14 @@
             $('.scoreScreenNamesTable').show();
             $('.scoreScreen').show();
             $('.scoreScreenDataTable').show();
-
+            $('.replayBox').hide();
+            $('.activePlayer').hide();
+            $('.leftP1').hide();
+            $('.leftP2').hide();
+            $('.leftP3').hide();
+            $('.rightP1').hide();
+            $('.rightP2').hide();
+            $('.rightP3').hide();
             let name1 = "", stat1 = {};
             let name2 = "", stat2 = {};
             let name3 = "", stat3 = {};

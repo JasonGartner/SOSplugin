@@ -24,7 +24,9 @@
             }
 
             body {
-                background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden;
+                background-color: rgba(0, 0, 0, 0);
+                margin: 0px auto;
+                overflow: hidden;
                 width: 1920px;
                 height: 1080px;
             }
@@ -45,6 +47,7 @@
                 text-shadow: #000 0px 0px 2px;
                 border-spacing: -5px;
             }
+
             .awayPicBox {
                 padding: 15px;
                 position: absolute;
@@ -61,6 +64,7 @@
                 border-radius: 0px 15px 15px 0px;
                 border-spacing: -5px;
             }
+
             .scoreLeftTeam {
                 padding: 15px;
                 position: absolute;
@@ -195,6 +199,7 @@
                 left: 0px;
                 text-align: left;
             }
+
             .team-infoR {
                 font-family: 'Bebas Neue';
                 color: white;
@@ -204,6 +209,7 @@
                 right: -18px;
                 text-align: right;
             }
+
             .team-info {
                 font-family: 'Bebas Neue';
                 color: white;
@@ -213,13 +219,14 @@
 
             .gameScoreL {
                 position: fixed;
-                left:818px;
+                left: 818px;
             }
+
             .gameScoreR {
                 position: fixed;
                 right: 818px;
             }
- 
+
 
             .game.time {
                 position: absolute;
@@ -406,6 +413,7 @@
                 text-shadow: #000 0px 0px 2px;
                 border: 2px solid var(--homePrimary);
             }
+
             /*
             .leftP2 {
                 border-radius: 15px;
@@ -448,6 +456,7 @@
                 text-shadow: #000 0px 0px 2px;
                 border: 2px solid var(--awayPrimary);
             }
+
             /*
             .rightP2 {
                 border-radius: 15px;
@@ -717,42 +726,47 @@
                 font-family: 'Bebas Neue';
                 font-size: 30px;
             }
-             /*_______________________________________________________________________________________________________________*/
-             .scoreScreen { /*added*/
+
+            /*_______________________________________________________________________________________________________________*/
+            .scoreScreen {
+                /*added*/
                 position: absolute;
                 top: 0px;
                 left: 0px;
-                z-index:-1;
+                z-index: -1;
             }
-            .scoreScreenData{
+
+            .scoreScreenData {
                 position: absolute;
             }
 
-            .scoreScreenNamesTable{
+            .scoreScreenNamesTable {
                 position: absolute;
                 top: 200px;
                 left: 0px;
                 color: white;
                 text-align: center;
                 font-family: 'Bebas Neue';
-                font-size: 50px;   
+                font-size: 50px;
                 table-layout: fixed;
                 width: 1920px;
                 border-spacing: 20px;
             }
 
-            .scoreScreenDataTable{
+            .scoreScreenDataTable {
                 position: absolute;
                 top: 360px;
                 left: 0px;
                 color: white;
                 text-align: center;
                 font-family: 'Bebas Neue';
-                font-size: 50px;   
+                font-size: 50px;
                 table-layout: fixed;
                 width: 1920px;
                 border-spacing: 34px;
-            } /*_______________________________________________________________________________________________________________*/
+            }
+
+            /*_______________________________________________________________________________________________________________*/
         </style>
     </head>
 
@@ -763,7 +777,7 @@
     </div>
     <div class="awayPicBox">
     </div>
-    
+
     <div class="scoreLeftTeam">
         <table class="team-infoL">
             <tr class="team left">
@@ -924,53 +938,54 @@
         <p class="assistedBy">test</p>
 
     </div>
-   <!--//_______________________________________________________________________________________________________________-->
-        <!-- End Score Screen--> 
-        <div class="scoreScreenNamesData"> <!--added-->
-            <table class="scoreScreenNamesTable">
-                <tr class="scoreScreenNames">
-                    <td class="scoreScreenNames1">test</td>
-                    <td class="scoreScreenNames2">test</td>
+    <!--//_______________________________________________________________________________________________________________-->
+    <!-- End Score Screen-->
+    <div class="scoreScreenNamesData"> <!--added-->
+        <table class="scoreScreenNamesTable">
+            <tr class="scoreScreenNames">
+                <td class="scoreScreenNames1">test</td>
+                <td class="scoreScreenNames2">test</td>
 
-                </tr>
-            </table>
+            </tr>
+        </table>
     </div>
 
-        <div class="scoreScreenData"> <!--added-->
-            <img class="scoreScreen" src="Pictures/ScoreScreen.png">
-                <table class="scoreScreenDataTable">
-                    <tr class="scoreScreenScores">
-                        <td class="scoreScreenscores1"></td>
-                        <td class="scoreScreenscores2"></td>
+    <div class="scoreScreenData"> <!--added-->
+        <img class="scoreScreen" src="Pictures/ScoreScreen.png">
+        <table class="scoreScreenDataTable">
+            <tr class="scoreScreenScores">
+                <td class="scoreScreenscores1"></td>
+                <td class="scoreScreenscores2"></td>
 
-                    </tr>
-                    <tr class="scoreScreenGoals">
-                        <td class="scoreScreenGoals1"></td>
-                        <td class="scoreScreenGoals2"></td>
+            </tr>
+            <tr class="scoreScreenGoals">
+                <td class="scoreScreenGoals1"></td>
+                <td class="scoreScreenGoals2"></td>
 
-                    </tr>
-                    <tr class="scoreScreenAssists">
-                        <td class="scoreScreenAssists1"></td>
-                        <td class="scoreScreenAssists2"></td>
+            </tr>
+            <tr class="scoreScreenAssists">
+                <td class="scoreScreenAssists1"></td>
+                <td class="scoreScreenAssists2"></td>
 
-                    </tr>
-                    <tr class="scoreScreenShots">
-                        <td class="scoreScreenShots1"></td>
-                        <td class="scoreScreenShots2"></td>
+            </tr>
+            <tr class="scoreScreenShots">
+                <td class="scoreScreenShots1"></td>
+                <td class="scoreScreenShots2"></td>
 
-                    </tr>
-                     <tr class="scoreScreenSaves">
-                        <td class="scoreScreenSaves1"></td>
-                        <td class="scoreScreenSaves2"></td>
+            </tr>
+            <tr class="scoreScreenSaves">
+                <td class="scoreScreenSaves1"></td>
+                <td class="scoreScreenSaves2"></td>
 
-                    </tr>
-                     <tr class="scoreScreenDemos">
-                        <td class="scoreScreenDemos1"></td>
-                        <td class="scoreScreenDemos2"></td>
-   
-                    </tr>
-                </table>
-        </div><!--//_______________________________________________________________________________________________________________-->
+            </tr>
+            <tr class="scoreScreenDemos">
+                <td class="scoreScreenDemos1"></td>
+                <td class="scoreScreenDemos2"></td>
+
+            </tr>
+        </table>
+    </div>
+    <!--//_______________________________________________________________________________________________________________-->
 </body>
 <script src="Common/sos-replacement.js"></script>
 <script>
@@ -1041,7 +1056,7 @@
                 var tmp = playerList[i][0];
                 var stats = playerList[i][1];
                 var playerNum = tmp.charAt(tmp.length - 1);
-        
+
 
                 if (playerNum == 1) {
                     $(".leftP1 .player.name1 .name").text(tmp.slice(0, -2));
@@ -1282,38 +1297,38 @@
                 console.log("away Score: " + awaySeriesScore);
             }
 
-            if ((homeSeriesScore / 7) == 1) {
+            if (homeSeriesScore >= 1) {
                 $('.homeG1').show();
             }
-            if ((homeSeriesScore / 7) == 2) {
+            if (homeSeriesScore >= 2) {
                 $('.homeG1').show();
                 $('.homeG2').show();
             }
-            if (homeSeriesScore / 7 == 3) {
+            if (homeSeriesScore >= 3) {
                 $('.homeG1').show();
                 $('.homeG2').show();
                 $('.homeG3').show();
             }
-            if (homeSeriesScore / 7 == 4) {
+            if (homeSeriesScore >= 4) {
                 $('.homeG1').show();
                 $('.homeG2').show();
                 $('.homeG3').show();
                 $('.homeG4').show();
             }
 
-            if ((awaySeriesScore / 7) == 1) {
+            if (awaySeriesScore >= 1) {
                 $('.awayG1').show();
             }
-            if ((awaySeriesScore / 7) == 2) {
+            if (awaySeriesScore >= 2) {
                 $('.awayG1').show();
                 $('.awayG2').show();
             }
-            if (awaySeriesScore / 7 == 3) {
+            if (awaySeriesScore >= 3) {
                 $('.awayG1').show();
                 $('.awayG2').show();
                 $('.awayG3').show();
             }
-            if (awaySeriesScore / 7 == 4) {
+            if (awaySeriesScore >= 4) {
                 $('.awayG1').show();
                 $('.awayG2').show();
                 $('.awayG3').show();
@@ -1323,14 +1338,21 @@
         });
     });
 
-//_______________________________________________________________________________________________________________
-$(() => { //End Game Score Screen
+    //_______________________________________________________________________________________________________________
+    $(() => { //End Game Score Screen
         WsSubscribers.init(49122, true)
         WsSubscribers.subscribe("game", "podium_start", (d) => {
             $('.scoreScreenNamesTable').show();
             $('.scoreScreen').show();
             $('.scoreScreenDataTable').show();
-
+            $('.replayBox').hide();
+            $('.activePlayer').hide();
+            $('.leftP1').hide();
+            $('.leftP2').hide();
+            $('.leftP3').hide();
+            $('.rightP1').hide();
+            $('.rightP2').hide();
+            $('.rightP3').hide();
             let name1 = "", stat1 = {};
             let name2 = "", stat2 = {};
 
@@ -1352,7 +1374,7 @@ $(() => { //End Game Score Screen
                 }
 
             }
-            
+
 
             //Player Names
             $(".scoreScreenNamesData .scoreScreenNames .scoreScreenNames1").text(name1.slice(0, -2));
@@ -1374,19 +1396,19 @@ $(() => { //End Game Score Screen
             //Shots
             $(".scoreScreenData .scoreScreenShots .scoreScreenShots1").text(stat1['shots']);
             $(".scoreScreenData .scoreScreenShots .scoreScreenShots2").text(stat2['shots']);
- 
+
             //Saves
             $(".scoreScreenData .scoreScreenSaves .scoreScreenSaves1").text(stat1['saves']);
             $(".scoreScreenData .scoreScreenSaves .scoreScreenSaves2").text(stat2['saves']);
-   
+
             //Demos
             $(".scoreScreenData .scoreScreenDemos .scoreScreenDemos1").text(stat1['demos']);
             $(".scoreScreenData .scoreScreenDemos .scoreScreenDemos2").text(stat2['demos']);
 
- 
+
         });
     });
-//_______________________________________________________________________________________________________________
+    //_______________________________________________________________________________________________________________
 
 </script>
 </head>

@@ -93,336 +93,35 @@
 
 
     //code for overlay
-    var playerList = [];
-    var blue1 = "name";
-    var r = document.querySelector(':root');
-    var gameTime = 0;
-    var homeColor = '';
-    var awayColor = '';
-    var clockStopped = false;
+var homeSeriesScore = 0;
+var awaySeriesScore = 0;
 
-    // Series scores
-    var homeSeriesScore = 0;
-    var awaySeriesScore = 0;
+$(() => {
 
-    $('.replayBox').hide();
-    $('.activePlayer').hide();
-    $('.leftP1').hide();
-    $('.leftP2').hide();
-    $('.leftP3').hide();
-    $('.rightP1').hide();
-    $('.rightP2').hide();
-    $('.rightP3').hide();
+    WsSubscribers.init(49122, false);
 
-    /*
-        $('.homeG1').show();
-        $('.homeG2').show();
-        $('.homeG3').show();
-        $('.homeG4').show();
-        $('.awayG1').show();
-        $('.awayG2').show();
-        $('.awayG3').show();
-        $('.awayG4').show();
-     */
+    WsSubscribers.subscribe("game", "match_ended", (d) => {
 
-    $('.homeG1').hide();
-    $('.homeG2').hide();
-    $('.homeG3').hide();
-    $('.homeG4').hide();
-    $('.awayG1').hide();
-    $('.awayG2').hide();
-    $('.awayG3').hide();
-    $('.awayG4').hide();
+        console.log("MATCH ENDED", d);
 
+        var teamNum = d['winner_team_num'];
 
+        if (teamNum == 0) {
+            homeSeriesScore = homeSeriesScore + 1;
+        }
 
-    $(() => {
-        WsSubscribers.init(49122, false)
-        WsSubscribers.subscribe("game", "update_state", (d) => {
-            //if Overtime
-            overtime = (d['game']['isOT']);
-            if (overtime == false) {
-                $('.isOT').hide();
-            } else {
-                $('.isOT').show();
-            }
+        if (teamNum == 1) {
+            awaySeriesScore = awaySeriesScore + 1;
+        }
 
+        document.getElementById("HomeScoreScreen").innerHTML =
+            homeSeriesScore + "-";
 
-            //players boost
-            playerList = Object.entries((d['players']));
-
-            for (let i = 0; i < 4; i++) {
-
-                var tmp = playerList[i][0];
-                var stats = playerList[i][1];
-                var playerNum = tmp.charAt(tmp.length - 1);
-        
-
-                if (playerNum == 1) {
-                    $(".leftP1 .player.name1 .name").text(tmp.slice(0, -2));
-                    $(".leftP1 .player.boost1 .boost").text(stats['boost']);
-                    document.getElementById("leftP1Boost").value = stats['boost'];
-                } else if (playerNum == 2) {
-                    $(".leftP2 .player.name2 .name").text(tmp.slice(0, -2));
-                    $(".leftP2 .player.boost2 .boost").text(stats['boost']);
-                    document.getElementById("leftP2Boost").value = stats['boost'];
-                } else if (playerNum == 3) {
-                    $(".leftP3 .player.name3 .name").text(tmp.slice(0, -2));
-                    $(".leftP3 .player.boost3 .boost").text(stats['boost']);
-                    document.getElementById("leftP3Boost").value = stats['boost'];
-                } else if (playerNum == 5) {
-                    $(".rightP1 .player.name4 .name").text(tmp.slice(0, -2));
-                    $(".rightP1 .player.boost4 .boost").text(stats['boost']);
-                    document.getElementById("rightP1Boost").value = stats['boost'];
-                } else if (playerNum == 6) {
-                    $(".rightP2 .player.name5 .name").text(tmp.slice(0, -2));
-                    $(".rightP2 .player.boost5 .boost").text(stats['boost']);
-                    document.getElementById("rightP2Boost").value = stats['boost'];
-                } else if (playerNum == 7) {
-                    $(".rightP3 .player.name6 .name").text(tmp.slice(0, -2));
-                    $(".rightP3 .player.boost6 .boost").text(stats['boost']);
-                    document.getElementById("rightP3Boost").value = stats['boost'];
-                } else {
-
-                }
-
-            }
-
-
-            //scoreboard
-            $(".scoreLeftTeam .team.left .gameScore").text(d['game']['teams'][0]['score']);
-            $(".scoreRightTeam .team.right .gameScore").text(d['game']['teams'][1]['score']);
-            $(".scoreLeftTeam .team.left .name").text(d['game']['teams'][0]['name']);
-            $(".scoreRightTeam .team.right .name").text(d['game']['teams'][1]['name']);
-            //r.style.setProperty('--homePrimary', d['game']['teams'][0]['color_primary']);
-            //r.style.setProperty('--awayPrimary', d['game']['teams'][1]['color_primary']);
-            //homeColor = d['game']['teams'][0]['color_primary'];
-            //awayColor = d['game']['teams'][1]['color_primary'];
-
-            //game time
-            gameTime = (d['game']['time_seconds']);
-            function myTime(time) {
-
-                var min = ~~((time % 3600) / 60);
-                var sec = time % 60;
-                var sec_min = "";
-                sec_min += "" + min + ":" + (sec < 10 ? "0" : "");
-                sec_min += "" + sec;
-                return sec_min;
-            }
-            $(".scoreTime .game.time .time").text(myTime(gameTime));
-
-
-            //active player
-            playerList = Object.entries((d['players']));
-
-            var tmp = (d['game']['target']);
-            var target = tmp.charAt(tmp.length - 1);
-
-            if (target < 3) {
-                r.style.setProperty('--activeColor', d['game']['teams'][0]['color_primary']);
-                r.style.setProperty('--activeBoostColor', 'linear-gradient(to right, #4970c9, #5aa2ec, #6bb2f2)');
-                r.style.setProperty('--activeBorderColor', '#5da6ec')
-            } else {
-                r.style.setProperty('--activeColor', d['game']['teams'][1]['color_primary']);
-                r.style.setProperty('--activeBoostColor', 'linear-gradient(to right, #de9242, #dead4c, #efcf61)');
-                r.style.setProperty('--activeBorderColor', '#eccb5f')
-            }
-
-            var arrayNum = getNum(target);
-            activePlayer(arrayNum);
-
-            function getNum(target) {
-
-                for (let i = 0; i < 4; i++) {
-                    var tmp = playerList[i][0];
-                    var playerNum = tmp.charAt(tmp.length - 1);
-
-                    if (target == playerNum) {
-                        return i;
-                    }
-                }
-            }
-            function activePlayer(arrayNum) {
-                var tmp = playerList[arrayNum][0];
-                var stats = playerList[arrayNum][1];
-                //player name
-                $(".activePlayer .activePlayerName .name").text(tmp.slice(0, -2));
-                //stats
-                $(".activePlayer .activePlayerStats .score").text(stats['score']);
-                $(".activePlayer .activePlayerStats .goals").text(stats['goals']);
-                $(".activePlayer .activePlayerStats .assists").text(stats['assists']);
-                $(".activePlayer .activePlayerStats .shots").text(stats['shots']);
-                $(".activePlayer .activePlayerStats .saves").text(stats['saves']);
-                $(".activePlayer .activePlayerStats .demos").text(stats['demos']);
-                document.getElementById("activeBoost").value = stats['boost'];
-            }
-
-            //if replay
-            replay = (d['game']['isReplay']);
-            if (clockStopped == true && replay == false) {
-                $('.leftP1').show();
-                $('.leftP2').show();
-                $('.leftP3').show();
-                $('.rightP1').show();
-                $('.rightP2').show();
-                $('.rightP3').show();
-                $('.replayBox').hide();
-                if (tmp == "") {
-                    $('.activePlayer').hide();
-                } else {
-                    $('.activePlayer').show();
-                }
-            } else if (clockStopped == true) {
-                $('.activePlayer').hide();
-                $('.leftP1').hide();
-                $('.leftP2').hide();
-                $('.leftP3').hide();
-                $('.rightP1').hide();
-                $('.rightP2').hide();
-                $('.rightP3').hide();
-
-            } else if (replay == true) {
-                $('.leftP1').hide();
-                $('.leftP2').hide();
-                $('.leftP3').hide();
-                $('.rightP1').hide();
-                $('.rightP2').hide();
-                $('.rightP3').hide();
-                $('.activePlayer').hide();
-
-            } else if (clockStopped == false) {
-                $('.leftP1').show();
-                $('.leftP2').show();
-                $('.leftP3').show();
-                $('.rightP1').show();
-                $('.rightP2').show();
-                $('.rightP3').show();
-                $('.replayBox').hide();
-                if (tmp == "") {
-                    $('.activePlayer').hide();
-                } else {
-                    $('.activePlayer').show();
-                }
-            }
-
-        });
+        document.getElementById("AwayScoreScreen").innerHTML =
+            awaySeriesScore;
     });
 
-    //replay Box
-    $(() => {
-        WsSubscribers.init(49122, true)
-        WsSubscribers.subscribe("game", "goal_scored", (d) => {
-            var assist = "ASSIST: ";
-            var kph = " KPH"
-            var ballSpeed = (Math.round(d['goalspeed'])) + kph;
-            $(".replayBox .roundedRectangle .scorerName").text(d['scorer']['name']);
-            $(".replayBox .assistedBy").text(assist.concat(d['assister']['name']));
-            $(".replayBox .ballSpeed").text(ballSpeed);
-            if ((d['scorer']['teamnum']) == 0) {
-                r.style.setProperty('--replayColor', '#5da6ec')
-            } else if ((d['scorer']['teamnum']) == 1) {
-                r.style.setProperty('--replayColor', '#eccb5f')
-            }
-        });
-    });
-
-    $(() => {
-        WsSubscribers.init(49122, true)
-        WsSubscribers.subscribe("game", "replay_start", (d) => {
-            $('.replayBox').show();
-            $('.activePlayer').hide();
-            $('.leftP1').hide();
-            $('.leftP2').hide();
-            $('.leftP3').hide();
-            $('.rightP1').hide();
-            $('.rightP2').hide();
-            $('.rightP3').hide();
-        });
-    });
-
-    $(() => {
-        WsSubscribers.init(49122, true)
-        WsSubscribers.subscribe("game", "pre_countdown_begin", (d) => {
-            $('.activePlayer').hide();
-            $('.replayBox').hide();
-            $('.leftP1').show();
-            $('.leftP2').show();
-            $('.leftP3').show();
-            $('.rightP1').show();
-            $('.rightP2').show();
-            $('.rightP3').show();
-
-        });
-    });
-
-    //hide elements
-    $(() => {
-        WsSubscribers.init(49122, true)
-        WsSubscribers.subscribe("game", "clock_stopped", (d) => {
-            clockStopped = true;
-        });
-    });
-    $(() => {
-        WsSubscribers.init(49122, true)
-        WsSubscribers.subscribe("game", "replay_end", (d) => {
-            $('.replayBox').hide();
-            clockStopped = false;
-        });
-    });
-
-    //series score
-    $(() => {
-        WsSubscribers.init(49122, true)
-        WsSubscribers.subscribe("game", "match_ended", (d) => {
-            var teamNum = (d['winner_team_num']);
-            $('.replayBox').hide();
-            $('.activePlayer').hide();
-            $('.leftP1').hide();
-            $('.leftP2').hide();
-            $('.leftP3').hide();
-            $('.rightP1').hide();
-            $('.rightP2').hide();
-            $('.rightP3').hide();
-            //if home team won
-            if (teamNum == 0) {
-                homeSeriesScore = homeSeriesScore + 1;
-                console.log("home Score: " + homeSeriesScore);
-
-            } else if (teamNum == 1) {
-                awaySeriesScore = awaySeriesScore + 1;
-                console.log("away Score: " + awaySeriesScore);
-            }
-
-            if ((homeSeriesScore / 7) == 1) {
-                document.getElementById("HomeScoreScreen").innerHTML = "1-";
-               
-            }
-            if ((homeSeriesScore / 7) == 2) {
-                document.getElementById("HomeScoreScreen").innerHTML = "2-";
-            }
-            if (homeSeriesScore / 7 == 3) {
-                document.getElementById("HomeScoreScreen").innerHTML = "3-";
-            }
-            if (homeSeriesScore / 7 == 4) {
-                document.getElementById("HomeScoreScreen").innerHTML = "4-";
-            }
-
-            if ((awaySeriesScore / 7) == 1) {
-                document.getElementById("AwayScoreScreen").innerHTML = "1";
-            }
-            if ((awaySeriesScore / 7) == 2) {
-                document.getElementById("AwayScoreScreen").innerHTML = "2";
-            }
-            if (awaySeriesScore / 7 == 3) {
-                document.getElementById("AwayScoreScreen").innerHTML = "3";
-            }
-            if (awaySeriesScore / 7 == 4) {
-                document.getElementById("AwayScoreScreen").innerHTML = "4";
-            }
-
-        });
-    });
+});
 
 
 </script>
